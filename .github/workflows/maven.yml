@@ -28,4 +28,4 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: uwuify upload
-        path: uwuify*.jar
+        path: /home/runner/work/uwu/uwu/target/uwuify*.jar
