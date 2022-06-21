@@ -33,6 +33,7 @@ THE SOFTWARE.
 /**
  * This class either contains the best code or the worst code ever written
  * @author Ran
+ * https://github.com/Ran-helo/uwu
  */
 public class Uwuifier {
 
