@@ -12,13 +12,13 @@ import org.bukkit.inventory.meta.BookMeta;
 public class uwuHandler implements Listener{
     @EventHandler
     public void onPlayerChat(AsyncPlayerChatEvent event) {
-        event.setMessage(Uwuifier.uwuify(event.getMessage()));
+        event.setMessage(Uwuifier.uwuifyMessage(event.getMessage()));
     }
 
     @EventHandler
     public void onPlayerPreview(AsyncPlayerChatPreviewEvent event) {
         if(!Uwuify.USE_PREVIEW) return;
-        event.setMessage(Uwuifier.uwuify(event.getMessage()));
+        event.setMessage(Uwuifier.uwuifyMessage(event.getMessage()));
     }
 
     @EventHandler
@@ -26,7 +26,7 @@ public class uwuHandler implements Listener{
         if(!Uwuify.SIGNS_UWUIFY) return;
         for(int i = 0; i < event.getLines().length; i++) {
             if(event.getLine(i) == null || event.getLine(i).equals("")) continue;
-            event.setLine(i, Uwuifier.uwuify(event.getLine(i)));
+            event.setLine(i, Uwuifier.uwuifyMessage(event.getLine(i)));
         }
     }
 
