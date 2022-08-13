@@ -31,7 +31,7 @@ public final class Uwuify extends JavaPlugin {
             }
             else{
                 uwu.getLogger().log(Level.WARNING, Uwuifier.uwuify("use-chat-preview is set to true, but previews-chat is not enabled in server.properties!"));
-                uwu.getLogger().log(Level.WARNING, Uwuifier.uwuify("To stop this warn please either set use-chat-preview to false or set previews-chat to True."));
+                uwu.getLogger().log(Level.WARNING, Uwuifier.uwuify("To stop this warn please either set use-chat-preview to false or set previews-chat to true."));
                 uwu.getLogger().log(Level.WARNING, Uwuifier.uwuify("Not enabling chat preview!"));
             }
         }
