@@ -25,7 +25,7 @@ public class uwuHandler implements Listener{
     public void onPlayerSign(SignChangeEvent event) {
         if(!Uwuify.SIGNS_UWUIFY) return;
         for(int i = 0; i < event.getLines().length; i++) {
-            if(event.getLine(i) == null) continue;
+            if(event.getLine(i) == null || event.getLine(i).equals("")) continue;
             event.setLine(i, Uwuifier.uwuify(event.getLine(i)));
         }
     }
