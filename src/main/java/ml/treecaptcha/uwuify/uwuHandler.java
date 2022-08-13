@@ -3,7 +3,6 @@ import io.github.ran.uwu.client.Uwuifier;
 import org.bukkit.event.Listener;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.block.SignChangeEvent;
-import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.AsyncPlayerChatPreviewEvent;
 import org.bukkit.event.player.PlayerEditBookEvent;
@@ -25,7 +24,8 @@ public class uwuHandler implements Listener{
     public void onPlayerSign(SignChangeEvent event) {
         if(!Uwuify.SIGNS_UWUIFY) return;
         for(int i = 0; i < event.getLines().length; i++) {
-            if(event.getLine(i) == null || event.getLine(i).equals("")) continue;
+            if("".equals(event.getLine(i))) continue;
+
             event.setLine(i, Uwuifier.uwuifyMessage(event.getLine(i)));
         }
     }
