@@ -7,12 +7,18 @@ import java.util.logging.Level;
 import io.github.ran.uwu.client.Uwuifier;
 public final class Uwuify extends JavaPlugin {
     public static Uwuify uwu;
+    public static boolean USE_PREVIEW;
+    public static boolean SIGNS_UWUIFY;
+    public static boolean BOOKS_UWUIFY;
     @Override
     public void onEnable() {
         uwu = this;
         getLogger().log(Level.INFO, Uwuifier.uwuify("give uwu sound effects cause idk where to get them"));
         new uwuHandler(this);
         saveDefaultConfig();
+        USE_PREVIEW = getConfig().getBoolean("use-preview");
+        SIGNS_UWUIFY = getConfig().getBoolean("signs-uwuify");
+        BOOKS_UWUIFY = getConfig().getBoolean("books-uwuify");
     }
 
     @Override
@@ -20,7 +26,5 @@ public final class Uwuify extends JavaPlugin {
         // Plugin shutdown logic
     }
 
-    public static final boolean USE_PREVIEW = uwu.getConfig().getBoolean("use-chat-preview");
-    public static final boolean SIGNS_UWUIFY = uwu.getConfig().getBoolean("signs-uwuify");
-    public static final boolean BOOKS_UWUIFY = uwu.getConfig().getBoolean("books-uwuify");
+
 }
