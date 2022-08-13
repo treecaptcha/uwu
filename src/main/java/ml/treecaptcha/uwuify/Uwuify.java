@@ -16,9 +16,7 @@ public final class Uwuify extends JavaPlugin {
         getLogger().log(Level.INFO, Uwuifier.uwuify("give uwu sound effects cause idk where to get them"));
         new uwuHandler(this);
         saveDefaultConfig();
-        USE_PREVIEW = getConfig().getBoolean("use-chat-preview");
-        SIGNS_UWUIFY = getConfig().getBoolean("signs-uwuify");
-        BOOKS_UWUIFY = getConfig().getBoolean("books-uwuify");
+        initializeVariables();
     }
 
     @Override
@@ -26,5 +24,9 @@ public final class Uwuify extends JavaPlugin {
         // Plugin shutdown logic
     }
 
-
+    private static void initializeVariables() {
+        Uwuify.USE_PREVIEW = uwu.getConfig().getBoolean("use-chat-preview");
+        Uwuify.SIGNS_UWUIFY = uwu.getConfig().getBoolean("signs-uwuify");
+        Uwuify.BOOKS_UWUIFY = uwu.getConfig().getBoolean("books-uwuify");
+    }
 }
