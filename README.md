@@ -1,5 +1,5 @@
 # UWUIFY
 Uwuify any Spigot/Paper/Purpur server 
 
-Uwuify is the next generation in block based computer games (i.e. minecraft). It has the ability to revolutionise minecraft gameplay through the use of uwufication of chat, signs and books.
+Uwuify unlocks the next generation of block based computing (i.e. minecraft). It has the ability to revolutionize minecraft gameplay through the use of uwufication of chat, signs and books.
 
