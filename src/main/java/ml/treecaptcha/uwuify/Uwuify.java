@@ -14,9 +14,9 @@ public final class Uwuify extends JavaPlugin {
     public void onEnable() {
         uwu = this;
         getLogger().log(Level.INFO, Uwuifier.uwuify("give uwu sound effects cause idk where to get them"));
-        new uwuHandler(this);
         saveDefaultConfig();
         initializeVariables();
+        new uwuHandler(this);
     }
 
     @Override
@@ -25,7 +25,15 @@ public final class Uwuify extends JavaPlugin {
     }
 
     private static void initializeVariables() {
-        Uwuify.USE_PREVIEW = uwu.getConfig().getBoolean("use-chat-preview");
+        if (uwu.getConfig().getBoolean("use-chat-preview")){
+            if (uwu.getServer().shouldSendChatPreviews()){
+                Uwuify.USE_PREVIEW = true;
+            }
+            else{
+                uwu.getLogger().log(Level.WARNING, Uwuifier.uwuify("use-chat-preview is set to true, but previews-chat is not enabled in server.properties!"));
+                uwu.getLogger().log(Level.WARNING, Uwuifier.uwuify("Not enabling chat preview!"));
+            }
+        }
         Uwuify.SIGNS_UWUIFY = uwu.getConfig().getBoolean("signs-uwuify");
         Uwuify.BOOKS_UWUIFY = uwu.getConfig().getBoolean("books-uwuify");
     }
