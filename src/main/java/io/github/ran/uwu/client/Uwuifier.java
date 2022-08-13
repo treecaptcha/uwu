@@ -1,5 +1,7 @@
 package io.github.ran.uwu.client;
 
+import ml.treecaptcha.uwuify.Uwuify;
+
 import java.util.Random;
 
 /*
@@ -39,7 +41,19 @@ public class Uwuifier {
 
     @SuppressWarnings("unused")
     public static String uwuify(String stringToUwuify) {
-        Random rand = new Random();
+        Random rand;
+
+        if(Uwuify.USE_PREVIEW) rand = new Random(stringToSeed(stringToUwuify));
+        else rand = new Random();
+
         return stringToUwuify.toLowerCase().replaceAll("r|l","w").replaceAll("n([aeiou])", "ny$1").replaceAll("ove", "uve").replaceAll("uck", "uwq").replaceFirst("i", "i-i").replaceFirst("(?s)(.*)" + "i-i-i", "$1" + "i-i") + ((rand.nextInt(10)) <= 2 ? " >-<" : "") + ((rand.nextInt(10)) <= 1 ? " uwu" : "");
+    }
+
+    public static long stringToSeed(String stringToSeed) {
+        long seed = 0;
+        for(int i = 0; i < stringToSeed.length(); i++) {
+            seed = (seed * 31) + stringToSeed.charAt(i);
+        }
+        return seed;
     }
 }
