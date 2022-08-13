@@ -19,4 +19,8 @@ public final class Uwuify extends JavaPlugin {
     public void onDisable() {
         // Plugin shutdown logic
     }
+
+    public static final boolean USE_PREVIEW = uwu.getConfig().getBoolean("use-chat-preview");
+    public static final boolean SIGNS_UWUIFY = uwu.getConfig().getBoolean("signs-uwuify");
+    public static final boolean BOOKS_UWUIFY = uwu.getConfig().getBoolean("books-uwuify");
 }

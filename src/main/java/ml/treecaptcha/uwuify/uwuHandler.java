@@ -17,13 +17,13 @@ public class uwuHandler implements Listener{
 
     @EventHandler
     public void onPlayerPreview(AsyncPlayerChatPreviewEvent event) {
-        if(!Uwuify.uwu.getConfig().getBoolean("use-chat-preview")) return;
+        if(!Uwuify.USE_PREVIEW) return;
         event.setMessage(Uwuifier.uwuify(event.getMessage()));
     }
 
     @EventHandler
     public void onPlayerSign(SignChangeEvent event) {
-        if(!Uwuify.uwu.getConfig().getBoolean("signs-uwuify")) return;
+        if(!Uwuify.SIGNS_UWUIFY) return;
         for(int i = 0; i < event.getLines().length; i++) {
             if(event.getLine(i) == null) continue;
             event.setLine(i, Uwuifier.uwuify(event.getLine(i)));
@@ -31,8 +31,8 @@ public class uwuHandler implements Listener{
     }
 
     @EventHandler
-    public void onPlayerInventory(PlayerEditBookEvent event) {
-        if(!Uwuify.uwu.getConfig().getBoolean("books-uwuify")) return;
+    public void onPlayerBookEdit(PlayerEditBookEvent event) {
+        if(!Uwuify.BOOKS_UWUIFY) return;
         BookMeta meta = event.getNewBookMeta();
         for(int i = 0; i < meta.getPageCount(); i++) {
             meta.setPage(i+1, Uwuifier.uwuify(meta.getPage(i+1)));
