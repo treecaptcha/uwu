@@ -1,10 +1,9 @@
 # uwu
-# this plugin has no configuration
 #
 #
 # MIT License
 #
-# Copyright (c) 2022 TreeCaptcha, Nafiul Islam
+# Copyright (c) 2022 TreeCaptcha, Nafiul Islam, RoostersEatYou
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -23,3 +22,10 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
+
+# this setting requires the previews-chat to be true in server.properties
+use-chat-preview: true
+
+# these settings below affect gameplay, so they will stay off by default until there is a solution to make the uwufication client side only
+signs-uwuify: false
+books-uwuify: false
