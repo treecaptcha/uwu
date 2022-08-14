@@ -1,13 +1,11 @@
 package ml.treecaptcha.uwuify;
 
+import io.github.ran.uwu.client.Uwuifier;
 import ml.treecaptcha.uwuify.paper.PaperUwuHandler;
 import ml.treecaptcha.uwuify.spigot.uwuHandler;
-import org.bukkit.World;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.logging.Level;
-
-import io.github.ran.uwu.client.Uwuifier;
 public final class Uwuify extends JavaPlugin {
     public static Uwuify uwu;
     public static boolean USE_PREVIEW;
