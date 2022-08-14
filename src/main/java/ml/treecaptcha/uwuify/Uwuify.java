@@ -1,5 +1,6 @@
 package ml.treecaptcha.uwuify;
 
+import ml.treecaptcha.uwuify.spigot.uwuHandler;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.logging.Level;
@@ -37,5 +38,23 @@ public final class Uwuify extends JavaPlugin {
         }
         Uwuify.SIGNS_UWUIFY = uwu.getConfig().getBoolean("signs-uwuify");
         Uwuify.BOOKS_UWUIFY = uwu.getConfig().getBoolean("books-uwuify");
+    }
+
+    private static void paperCheck() {
+        try {
+            Class.forName("io.papermc.paper.event.player.PlayerItemCooldownEvent");
+        } catch (ClassNotFoundException err) {
+            spigotLoad();
+            return;
+        }
+        paperLoad();
+    }
+
+    private static void spigotLoad() {
+
+    }
+
+    private static void paperLoad() {
+
     }
 }
