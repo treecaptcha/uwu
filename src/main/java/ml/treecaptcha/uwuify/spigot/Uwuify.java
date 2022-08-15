@@ -1,6 +1,7 @@
 package ml.treecaptcha.uwuify.spigot;
 
 import ml.treecaptcha.uwuify.core.Configuration;
+import ml.treecaptcha.uwuify.paper.PaperUwuHandler;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.logging.Level;
@@ -20,7 +21,7 @@ public final class Uwuify extends JavaPlugin {
         getLogger().log(Level.INFO, Uwuifier.uwuify("give uwu sound effects cause idk where to get them"));
         saveDefaultConfig();
         initializeVariables();
-        new uwuHandler(this);
+        checkPaper();
     }
 
     @Override
@@ -41,5 +42,25 @@ public final class Uwuify extends JavaPlugin {
         }
         SIGNS_UWUIFY = uwu.getConfig().getBoolean("signs-uwuify");
         BOOKS_UWUIFY = uwu.getConfig().getBoolean("books-uwuify");
+    }
+
+    public static void checkPaper() {
+        try {
+            Class.forName("io.papermc.paper.event.entity.WardenAngerChangeEvent");
+            loadPaper();
+        } catch (ClassNotFoundException e) {
+            uwu.getLogger().log(Level.INFO, Uwuifier.uwuify("You are not using Paper! We highly recommend you do so!"));
+            loadSpigot();
+        }
+    }
+
+    private static void loadSpigot() {
+        uwu.getLogger().log(Level.INFO, Uwuifier.uwuify("Loading Spigot version of uwuify!"));
+        new SpigotUwuHandler(uwu);
+    }
+
+    public static void loadPaper() {
+        uwu.getLogger().log(Level.INFO, Uwuifier.uwuify("Loading Paper version of uwuify!"));
+        new PaperUwuHandler(uwu);
     }
 }
