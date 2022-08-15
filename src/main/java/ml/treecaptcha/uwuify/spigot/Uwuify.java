@@ -1,23 +1,26 @@
-package ml.treecaptcha.uwuify;
+package ml.treecaptcha.uwuify.spigot;
 
-import io.github.ran.uwu.client.Uwuifier;
-import ml.treecaptcha.uwuify.paper.PaperUwuHandler;
-import ml.treecaptcha.uwuify.spigot.uwuHandler;
+import ml.treecaptcha.uwuify.core.Configuration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.logging.Level;
+
+import io.github.ran.uwu.client.Uwuifier;
 public final class Uwuify extends JavaPlugin {
     public static Uwuify uwu;
-    public static boolean USE_PREVIEW;
+    /**
+     * Should signs be uwuified?
+     */
     public static boolean SIGNS_UWUIFY;
     public static boolean BOOKS_UWUIFY;
+
     @Override
     public void onEnable() {
         uwu = this;
         getLogger().log(Level.INFO, Uwuifier.uwuify("give uwu sound effects cause idk where to get them"));
         saveDefaultConfig();
         initializeVariables();
-        paperCheck();
+        new uwuHandler(this);
     }
 
     @Override
@@ -28,7 +31,7 @@ public final class Uwuify extends JavaPlugin {
     private static void initializeVariables() {
         if (uwu.getConfig().getBoolean("use-chat-preview")){
             if (uwu.getServer().shouldSendChatPreviews()){
-                Uwuify.USE_PREVIEW = true;
+                Configuration.USE_PREVIEW = true;
             }
             else{
                 uwu.getLogger().log(Level.WARNING, Uwuifier.uwuify("use-chat-preview is set to true, but previews-chat is not enabled in server.properties!"));
@@ -36,28 +39,7 @@ public final class Uwuify extends JavaPlugin {
                 uwu.getLogger().log(Level.WARNING, Uwuifier.uwuify("Not enabling chat preview!"));
             }
         }
-        Uwuify.SIGNS_UWUIFY = uwu.getConfig().getBoolean("signs-uwuify");
-        Uwuify.BOOKS_UWUIFY = uwu.getConfig().getBoolean("books-uwuify");
-    }
-
-    private static void paperCheck() {
-        try {
-            Class.forName("io.papermc.paper.event.player.PlayerItemCooldownEvent");
-        } catch (ClassNotFoundException err) {
-            spigotLoad();
-            return;
-        }
-        paperLoad();
-    }
-
-    private static void spigotLoad() {
-        uwu.getLogger().log(Level.INFO, Uwuifier.uwuify("Loading spigot uwuify"));
-        uwu.getLogger().log(Level.INFO, Uwuifier.uwuify("Paper provides many advantages over spigot, so we suggest upgrading to paper!"));
-        new uwuHandler(uwu);
-    }
-
-    private static void paperLoad() {
-        uwu.getLogger().log(Level.INFO, Uwuifier.uwuify("Loading paper uwuify"));
-        new PaperUwuHandler(uwu);
+        SIGNS_UWUIFY = uwu.getConfig().getBoolean("signs-uwuify");
+        BOOKS_UWUIFY = uwu.getConfig().getBoolean("books-uwuify");
     }
 }

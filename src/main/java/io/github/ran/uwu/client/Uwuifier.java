@@ -1,6 +1,6 @@
 package io.github.ran.uwu.client;
 
-import ml.treecaptcha.uwuify.Uwuify;
+import ml.treecaptcha.uwuify.core.Configuration;
 
 import java.util.Random;
 
@@ -44,7 +44,7 @@ public class Uwuifier {
      */
     public static String uwuifyMessage(String stringToUwuify) {
 
-        if(Uwuify.USE_PREVIEW) {
+        if(Configuration.USE_PREVIEW) {
             return uwuifySame(stringToUwuify);
         }
 

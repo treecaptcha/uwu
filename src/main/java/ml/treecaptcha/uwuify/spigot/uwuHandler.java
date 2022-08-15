@@ -1,9 +1,8 @@
 package ml.treecaptcha.uwuify.spigot;
-
 import io.github.ran.uwu.client.Uwuifier;
-import ml.treecaptcha.uwuify.Uwuify;
-import org.bukkit.event.EventHandler;
+import ml.treecaptcha.uwuify.core.Configuration;
 import org.bukkit.event.Listener;
+import org.bukkit.event.EventHandler;
 import org.bukkit.event.block.SignChangeEvent;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.AsyncPlayerChatPreviewEvent;
@@ -18,7 +17,7 @@ public class uwuHandler implements Listener {
 
     @EventHandler
     public void onPlayerPreview(AsyncPlayerChatPreviewEvent event) {
-        if(!Uwuify.USE_PREVIEW) return;
+        if(!Configuration.USE_PREVIEW) return;
         event.setMessage(Uwuifier.uwuifyMessage(event.getMessage()));
     }
 
