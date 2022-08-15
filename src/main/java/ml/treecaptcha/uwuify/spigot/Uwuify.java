@@ -21,7 +21,7 @@ public final class Uwuify extends JavaPlugin {
         getLogger().log(Level.INFO, Uwuifier.uwuify("give uwu sound effects cause idk where to get them"));
         saveDefaultConfig();
         initializeVariables();
-        new uwuHandler(this);
+        checkPaper();
     }
 
     @Override
