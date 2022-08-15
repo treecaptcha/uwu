@@ -9,7 +9,7 @@ import org.bukkit.event.player.AsyncPlayerChatPreviewEvent;
 import org.bukkit.event.player.PlayerEditBookEvent;
 import org.bukkit.inventory.meta.BookMeta;
 
-public class uwuHandler implements Listener {
+public class SpigotUwuHandler implements Listener {
     @EventHandler
     public void onPlayerChat(AsyncPlayerChatEvent event) {
         event.setMessage(Uwuifier.uwuifyMessage(event.getMessage()));
@@ -44,7 +44,7 @@ public class uwuHandler implements Listener {
         event.setNewBookMeta(meta);
     }
 
-    public uwuHandler(Uwuify plugin){
+    public SpigotUwuHandler(Uwuify plugin){
         plugin.getServer().getPluginManager().registerEvents(this, plugin);
     }
 }

@@ -47,17 +47,16 @@ public final class Uwuify extends JavaPlugin {
     public static void checkPaper() {
         try {
             Class.forName("io.papermc.paper.event.entity.WardenAngerChangeEvent");
+            loadPaper();
         } catch (ClassNotFoundException e) {
-            uwu.getLogger().log(Level.WARNING, Uwuifier.uwuify("You are not using Paper! We highly recommend you do so!"));
+            uwu.getLogger().log(Level.INFO, Uwuifier.uwuify("You are not using Paper! We highly recommend you do so!"));
             loadSpigot();
-            return;
         }
-        loadPaper();
     }
 
     private static void loadSpigot() {
         uwu.getLogger().log(Level.INFO, Uwuifier.uwuify("Loading Spigot version of uwuify!"));
-        new uwuHandler(uwu);
+        new SpigotUwuHandler(uwu);
     }
 
     public static void loadPaper() {
