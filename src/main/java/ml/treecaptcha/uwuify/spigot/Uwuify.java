@@ -1,5 +1,6 @@
-package ml.treecaptcha.uwuify;
+package ml.treecaptcha.uwuify.spigot;
 
+import ml.treecaptcha.uwuify.core.Configuration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.logging.Level;
@@ -7,9 +8,12 @@ import java.util.logging.Level;
 import io.github.ran.uwu.client.Uwuifier;
 public final class Uwuify extends JavaPlugin {
     public static Uwuify uwu;
-    public static boolean USE_PREVIEW;
+    /**
+     * Should signs be uwuified?
+     */
     public static boolean SIGNS_UWUIFY;
     public static boolean BOOKS_UWUIFY;
+
     @Override
     public void onEnable() {
         uwu = this;
@@ -27,7 +31,7 @@ public final class Uwuify extends JavaPlugin {
     private static void initializeVariables() {
         if (uwu.getConfig().getBoolean("use-chat-preview")){
             if (uwu.getServer().shouldSendChatPreviews()){
-                Uwuify.USE_PREVIEW = true;
+                Configuration.USE_PREVIEW = true;
             }
             else{
                 uwu.getLogger().log(Level.WARNING, Uwuifier.uwuify("use-chat-preview is set to true, but previews-chat is not enabled in server.properties!"));
@@ -35,7 +39,7 @@ public final class Uwuify extends JavaPlugin {
                 uwu.getLogger().log(Level.WARNING, Uwuifier.uwuify("Not enabling chat preview!"));
             }
         }
-        Uwuify.SIGNS_UWUIFY = uwu.getConfig().getBoolean("signs-uwuify");
-        Uwuify.BOOKS_UWUIFY = uwu.getConfig().getBoolean("books-uwuify");
+        SIGNS_UWUIFY = uwu.getConfig().getBoolean("signs-uwuify");
+        BOOKS_UWUIFY = uwu.getConfig().getBoolean("books-uwuify");
     }
 }
