@@ -2,8 +2,8 @@ package ml.treecaptcha.uwuify.paper;
 
 import io.github.ran.uwu.client.Uwuifier;
 import io.papermc.paper.event.player.AsyncChatDecorateEvent;
-import io.papermc.paper.event.player.AsyncChatEvent;
-import ml.treecaptcha.uwuify.Uwuify;
+import ml.treecaptcha.uwuify.core.Configuration;
+import ml.treecaptcha.uwuify.spigot.Uwuify;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer;
 import org.bukkit.event.EventHandler;
@@ -19,7 +19,7 @@ public class PaperUwuHandler implements Listener {
 
     @EventHandler
     public void onPlayerPreview(AsyncChatDecorateEvent event) {
-        if(!Uwuify.USE_PREVIEW) return;
+        if(!Configuration.USE_PREVIEW) return;
         PlainTextComponentSerializer serializer = PlainTextComponentSerializer.plainText();
         event.result(Component.text(Uwuifier.uwuifyMessage(serializer.serialize(event.result()))));
     }
