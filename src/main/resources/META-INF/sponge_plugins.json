@@ -1,0 +1,40 @@
+{
+  "loader": {
+    "name": "java_plain",
+    "version": "1.0"
+  },
+  "license": "MIT",
+  "plugins": [
+    {
+      "id": "uwuify",
+      "name": "Uwuify",
+      "version": "${project.version}",
+      "entrypoint": "ml.treecaptcha.uwuify.sponge.Uwuify",
+      "description": "made with stolen code from Ran-helo/uwu",
+      "links": {
+        "homepage": "https://github.com/treecaptcha/uwu",
+        "source": "https://github.com/treecaptcha/uwu",
+        "issues": "https://github.com/treecaptcha/uwu/issues"
+      },
+      "contributors": [
+        {
+          "name": "TreeCaptcha",
+          "description": "Lead Developer"
+        },
+        {
+          "name": "RoostersEatYou",
+          "description" : "Contributor"
+        }
+
+      ],
+      "dependencies": [
+        {
+          "id": "spongeapi",
+          "version": "8.0.0",
+          "load-order": "AFTER",
+          "optional": false
+        }
+      ]
+    }
+  ]
+}
