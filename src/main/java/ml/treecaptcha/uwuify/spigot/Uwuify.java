@@ -2,6 +2,7 @@ package ml.treecaptcha.uwuify.spigot;
 
 import ml.treecaptcha.uwuify.core.Configuration;
 import ml.treecaptcha.uwuify.paper.PaperUwuHandler;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.logging.Level;
@@ -14,6 +15,7 @@ public final class Uwuify extends JavaPlugin {
      */
     public static boolean SIGNS_UWUIFY;
     public static boolean BOOKS_UWUIFY;
+    public static boolean DISCORDSRV_PAPER;
 
     @Override
     public void onEnable() {
@@ -22,6 +24,7 @@ public final class Uwuify extends JavaPlugin {
         saveDefaultConfig();
         initializeVariables();
         checkPaper();
+        checkDiscordSRV();
     }
 
     @Override
@@ -62,5 +65,13 @@ public final class Uwuify extends JavaPlugin {
     public static void loadPaper() {
         uwu.getLogger().log(Level.INFO, Uwuifier.uwuify("Loading Paper version of uwuify!"));
         new PaperUwuHandler(uwu);
+    }
+
+    public static void checkDiscordSRV() {
+        if(uwu.getServer().getPluginManager().isPluginEnabled("DiscordSRV")) {
+            //get DiscordSRV's Config
+            FileConfiguration discordSRVConfig = uwu.getServer().getPluginManager().getPlugin("DiscordSRV").getConfig();
+            DISCORDSRV_PAPER = discordSRVConfig.getBoolean("UseModernPaperChatEvent");
+        }
     }
 }

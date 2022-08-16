@@ -1,20 +1,35 @@
 package ml.treecaptcha.uwuify.paper;
 
+import com.google.gson.Gson;
 import io.github.ran.uwu.client.Uwuifier;
 import io.papermc.paper.event.player.AsyncChatDecorateEvent;
+import io.papermc.paper.event.player.AsyncChatEvent;
 import ml.treecaptcha.uwuify.core.Configuration;
 import ml.treecaptcha.uwuify.spigot.Uwuify;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
+import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerEditBookEvent;
 import org.bukkit.inventory.meta.BookMeta;
+
+import java.util.logging.Level;
 
 public class PaperUwuHandler implements Listener {
 
     public PaperUwuHandler(Uwuify uwuify) {
         uwuify.getServer().getPluginManager().registerEvents(this, uwuify);
+    }
+
+    //Workaround for if the player uses DiscordSRV but doesn't have the DiscordSRV config set to use Paper's chat event.
+    @EventHandler(priority = EventPriority.HIGHEST)
+    public void onPlayerChat(AsyncPlayerChatEvent event) {
+        if(Uwuify.DISCORDSRV_PAPER) return;
+        event.setMessage(Uwuifier.uwuifyMessage(event.getMessage()));
+        Uwuify.uwu.getLogger().log(Level.WARNING, Uwuifier.uwuify("DiscordSRV is not set to use Paper's chat event."));
+        Uwuify.uwu.getLogger().log(Level.WARNING, Uwuifier.uwuify("Please set DiscordSRV's config to use Paper's chat event."));
     }
 
     @EventHandler
