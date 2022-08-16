@@ -23,21 +23,7 @@ public class PaperUwuHandler implements Listener {
         uwuify.getServer().getPluginManager().registerEvents(this, uwuify);
     }
 
-    //Workaround for if the player uses DiscordSRV but doesn't have the DiscordSRV config set to use Paper's chat event.
-    @EventHandler(priority = EventPriority.NORMAL)
-    public void onPlayerChat(AsyncPlayerChatEvent event) {
-        if(Uwuify.DISCORDSRV_PAPER) return;
-        event.setMessage(Uwuifier.uwuifyMessage(event.getMessage()));
-        Uwuify.uwu.getLogger().log(Level.WARNING, Uwuifier.uwuify("DiscordSRV is not set to use Paper's chat event."));
-        Uwuify.uwu.getLogger().log(Level.WARNING, Uwuifier.uwuify("Please set DiscordSRV's config to use Paper's chat event."));
-    }
 
-    @EventHandler
-    public void onPlayerPreview(AsyncChatDecorateEvent event) {
-        if(!Configuration.USE_PREVIEW) return;
-        PlainTextComponentSerializer serializer = PlainTextComponentSerializer.plainText();
-        event.result(Component.text(Uwuifier.uwuifyMessage(serializer.serialize(event.result()))));
-    }
 
     @EventHandler
     public void onSignChange(org.bukkit.event.block.SignChangeEvent e) {

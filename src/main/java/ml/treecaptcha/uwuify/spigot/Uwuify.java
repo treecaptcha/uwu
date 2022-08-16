@@ -18,7 +18,10 @@ public final class Uwuify extends JavaPlugin {
      */
     public static boolean SIGNS_UWUIFY;
     public static boolean BOOKS_UWUIFY;
-    public static boolean DISCORDSRV_PAPER;
+
+    public static String CHAT_HANDLER;
+
+    public static String PLATFORM;
 
     @Override
     public void onEnable() {
@@ -28,6 +31,7 @@ public final class Uwuify extends JavaPlugin {
         initializeVariables();
         checkPaper();
         checkDiscordSRV();
+        loadChat();
     }
 
     @Override
@@ -48,14 +52,16 @@ public final class Uwuify extends JavaPlugin {
         }
         SIGNS_UWUIFY = uwu.getConfig().getBoolean("signs-uwuify");
         BOOKS_UWUIFY = uwu.getConfig().getBoolean("books-uwuify");
+        CHAT_HANDLER = uwu.getConfig().getString("chat-handler");
     }
-
     public static void checkPaper() {
         try {
             Class.forName("io.papermc.paper.event.entity.WardenAngerChangeEvent");
+            PLATFORM = "paper";
             loadPaper();
         } catch (ClassNotFoundException e) {
             uwu.getLogger().log(Level.INFO, Uwuifier.uwuify("You are not using Paper! We highly recommend you do so!"));
+            PLATFORM = "spigot";
             loadSpigot();
         }
     }
@@ -70,13 +76,45 @@ public final class Uwuify extends JavaPlugin {
         new PaperUwuHandler(uwu);
     }
 
+    public static void loadChat(){
+        if (CHAT_HANDLER.equals("paper") && PLATFORM.equals("paper")){
+            loadPaperChat();
+        }
+        else if (CHAT_HANDLER.equals("spigot")){
+            loadSpigotChat();
+        }
+        else if (CHAT_HANDLER.equals("paper") && PLATFORM.equals("spigot") ){
+            uwu.getLogger().log(Level.SEVERE, "THE PLATFORM DOES NOT APPEAR TO BE PAPER YET \"paper\" WAS CHOSEN AS THE CHAT HANDLER!");
+            loadPaperChat();
+        }
+        else {
+            uwu.getLogger().log(Level.SEVERE, "THE PLATFORM WAS UNKNOWN NOT ENABLING THE CHAT HANDLER!");
+        }
+    }
+    public static void loadPaperChat(){
+        new PaperUwuHandler(uwu);
+    }
+
+    public static void loadSpigotChat(){
+        new SpigotChatHandler(uwu);
+    }
+
     public static void checkDiscordSRV() {
         if(uwu.getServer().getPluginManager().isPluginEnabled("DiscordSRV")) {
             //get DiscordSRV's Config
             Plugin discordSRV = uwu.getServer().getPluginManager().getPlugin("DiscordSRV");
             //get the config file the annoying way.
             YamlConfiguration discordSRVConfig = YamlConfiguration.loadConfiguration(new File(discordSRV.getDataFolder(), "config.yml"));
-            DISCORDSRV_PAPER = discordSRVConfig.getBoolean("UseModernPaperChatEvent");
+            if(!discordSRVConfig.getBoolean("UseModernPaperChatEvent")){
+                uwu.getLogger().log(Level.WARNING, Uwuifier.uwuify("UseModernPaperChatEvent is not set to true in DiscordSRV config!"));
+                if (CHAT_HANDLER.equals("auto")){
+                    CHAT_HANDLER = "spigot";
+                    uwu.getLogger().log(Level.WARNING, Uwuifier.uwuify("Will initialise chat handler as a spigot server!"));
+                }
+            }
+            else if (PLATFORM.equals("paper") && CHAT_HANDLER.equals("auto")){
+                    CHAT_HANDLER = "paper";
+            }
         }
     }
 }
