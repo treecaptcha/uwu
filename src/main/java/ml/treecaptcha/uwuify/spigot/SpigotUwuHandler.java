@@ -1,6 +1,7 @@
 package ml.treecaptcha.uwuify.spigot;
 import io.github.ran.uwu.client.Uwuifier;
 import ml.treecaptcha.uwuify.core.Configuration;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.block.SignChangeEvent;
@@ -10,7 +11,7 @@ import org.bukkit.event.player.PlayerEditBookEvent;
 import org.bukkit.inventory.meta.BookMeta;
 
 public class SpigotUwuHandler implements Listener {
-    @EventHandler
+    @EventHandler(priority = EventPriority.HIGHEST)
     public void onPlayerChat(AsyncPlayerChatEvent event) {
         event.setMessage(Uwuifier.uwuifyMessage(event.getMessage()));
     }
