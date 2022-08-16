@@ -34,7 +34,5 @@ public class SpigotUwuHandler implements Listener {
         event.setNewBookMeta(meta);
     }
 
-    public SpigotUwuHandler(Uwuify plugin){
-        plugin.getServer().getPluginManager().registerEvents(this, plugin);
-    }
+
 }

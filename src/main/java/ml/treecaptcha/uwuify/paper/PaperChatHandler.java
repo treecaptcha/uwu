@@ -16,7 +16,4 @@ public class PaperChatHandler implements Listener {
         PlainTextComponentSerializer serializer = PlainTextComponentSerializer.plainText();
         event.result(Component.text(Uwuifier.uwuifyMessage(serializer.serialize(event.result()))));
     }
-    public PaperChatHandler(Uwuify uwuify) {
-        uwuify.getServer().getPluginManager().registerEvents(this, uwuify);
-    }
 }

@@ -19,8 +19,5 @@ public class SpigotChatHandler implements Listener {
         if(!Configuration.USE_PREVIEW) return;
         event.setMessage(Uwuifier.uwuifyMessage(event.getMessage()));
     }
-    public SpigotChatHandler(Uwuify plugin){
-        plugin.getServer().getPluginManager().registerEvents(this, plugin);
-    }
 
 }

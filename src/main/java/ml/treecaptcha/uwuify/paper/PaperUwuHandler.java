@@ -19,9 +19,7 @@ import java.util.logging.Level;
 
 public class PaperUwuHandler implements Listener {
 
-    public PaperUwuHandler(Uwuify uwuify) {
-        uwuify.getServer().getPluginManager().registerEvents(this, uwuify);
-    }
+
 
 
 
