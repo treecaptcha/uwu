@@ -88,14 +88,18 @@ public final class Uwuify extends JavaPlugin {
             loadPaperChat();
         }
         else {
-            uwu.getLogger().log(Level.SEVERE, "THE PLATFORM WAS UNKNOWN NOT ENABLING THE CHAT HANDLER!");
+            uwu.getLogger().log(Level.SEVERE, "THE CHAT HANDLER WAS UNKNOWN NOT ENABLING THE CHAT HANDLER!");
+            uwu.getLogger().log(Level.SEVERE, "HANDLER: " + CHAT_HANDLER + " SERVER: " + PLATFORM);
+
         }
     }
     public static void loadPaperChat(){
+        uwu.getLogger().log(Level.INFO, Uwuifier.uwuify("Using paper as the chat provider!"));
         new PaperUwuHandler(uwu);
     }
 
     public static void loadSpigotChat(){
+        uwu.getLogger().log(Level.INFO, Uwuifier.uwuify("Using spigot as the chat provider!"));
         new SpigotChatHandler(uwu);
     }
 
@@ -112,9 +116,11 @@ public final class Uwuify extends JavaPlugin {
                     uwu.getLogger().log(Level.WARNING, Uwuifier.uwuify("Will initialise chat handler as a spigot server!"));
                 }
             }
-            else if (PLATFORM.equals("paper") && CHAT_HANDLER.equals("auto")){
-                    CHAT_HANDLER = "paper";
+
             }
+        if (PLATFORM.equals("paper") && CHAT_HANDLER.equals("auto")){
+            CHAT_HANDLER = "paper";
+
         }
     }
 }
