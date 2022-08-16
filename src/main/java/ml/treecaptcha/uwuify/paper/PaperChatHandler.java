@@ -3,7 +3,6 @@ package ml.treecaptcha.uwuify.paper;
 import io.github.ran.uwu.client.Uwuifier;
 import io.papermc.paper.event.player.AsyncChatDecorateEvent;
 import ml.treecaptcha.uwuify.core.Configuration;
-import ml.treecaptcha.uwuify.spigot.Uwuify;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer;
 import org.bukkit.event.EventHandler;
