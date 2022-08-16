@@ -10,6 +10,7 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.logging.Level;
@@ -113,11 +114,10 @@ public final class Uwuify extends JavaPlugin {
         getLogger().log(Level.INFO, Uwuifier.uwuify("give uwu sound effects cause idk where to get them"));
         saveDefaultConfig();
         initializeVariables();
+        listeners = new ArrayList<>();
         listeners.add(getChatHandler());
         listeners.add(getUwuHandler());
         registerListeners(this, listeners);
-
-
     }
 
     @Override
