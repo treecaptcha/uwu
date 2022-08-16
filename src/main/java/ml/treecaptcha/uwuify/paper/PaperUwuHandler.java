@@ -24,7 +24,7 @@ public class PaperUwuHandler implements Listener {
     }
 
     //Workaround for if the player uses DiscordSRV but doesn't have the DiscordSRV config set to use Paper's chat event.
-    @EventHandler(priority = EventPriority.HIGHEST)
+    @EventHandler(priority = EventPriority.NORMAL)
     public void onPlayerChat(AsyncPlayerChatEvent event) {
         if(Uwuify.DISCORDSRV_PAPER) return;
         event.setMessage(Uwuifier.uwuifyMessage(event.getMessage()));

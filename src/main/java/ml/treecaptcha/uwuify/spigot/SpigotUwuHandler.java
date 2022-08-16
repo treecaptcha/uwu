@@ -11,7 +11,7 @@ import org.bukkit.event.player.PlayerEditBookEvent;
 import org.bukkit.inventory.meta.BookMeta;
 
 public class SpigotUwuHandler implements Listener {
-    @EventHandler(priority = EventPriority.HIGHEST)
+    @EventHandler(priority = EventPriority.NORMAL)
     public void onPlayerChat(AsyncPlayerChatEvent event) {
         event.setMessage(Uwuifier.uwuifyMessage(event.getMessage()));
     }
