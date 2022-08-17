@@ -9,7 +9,7 @@ import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.AsyncPlayerChatPreviewEvent;
 
 public class SpigotChatHandler implements Listener {
-    @EventHandler(priority = EventPriority.NORMAL)
+    @EventHandler
     public void onPlayerChat(AsyncPlayerChatEvent event) {
         event.setMessage(Uwuifier.uwuifyMessage(event.getMessage()));
     }
