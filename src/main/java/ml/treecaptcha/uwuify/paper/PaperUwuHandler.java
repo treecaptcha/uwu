@@ -1,28 +1,27 @@
 package ml.treecaptcha.uwuify.paper;
 
+import com.google.gson.Gson;
 import io.github.ran.uwu.client.Uwuifier;
 import io.papermc.paper.event.player.AsyncChatDecorateEvent;
+import io.papermc.paper.event.player.AsyncChatEvent;
 import ml.treecaptcha.uwuify.core.Configuration;
 import ml.treecaptcha.uwuify.spigot.Uwuify;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
+import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerEditBookEvent;
 import org.bukkit.inventory.meta.BookMeta;
 
+import java.util.logging.Level;
+
 public class PaperUwuHandler implements Listener {
 
-    public PaperUwuHandler(Uwuify uwuify) {
-        uwuify.getServer().getPluginManager().registerEvents(this, uwuify);
-    }
 
-    @EventHandler
-    public void onPlayerPreview(AsyncChatDecorateEvent event) {
-        if(!Configuration.USE_PREVIEW) return;
-        PlainTextComponentSerializer serializer = PlainTextComponentSerializer.plainText();
-        event.result(Component.text(Uwuifier.uwuifyMessage(serializer.serialize(event.result()))));
-    }
+
+
 
     @EventHandler
     public void onSignChange(org.bukkit.event.block.SignChangeEvent e) {

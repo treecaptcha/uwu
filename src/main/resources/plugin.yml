@@ -5,3 +5,4 @@ api-version: 1.19
 authors: [ TreeCaptcha ]
 description: made with stolen code from Ran-helo/uwu
 website: http://treecaptcha.ml/
+softdepend: [ DiscordSRV ]
