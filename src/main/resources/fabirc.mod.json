@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "uwuify",
+  "version": "${project.version}",
+  "name": "Uwuify",
+  "description": "made with stolen code from Ran-helo/uwu",
+  "authors": ["TreeCaptcha", "RoostersEatYou"],
+  "contact": {
+    "repository": "https://github.com/treecaptcha/uwu"
+  },
+  "license": "MIT",
+  "icon": "assets/uwuify/icon.png",
+  "environment": "server",
+  "entrypoints": {
+    "main": [
+      "ml.treecaptcha.uwuify.fabric.Uwuify"
+    ]
+  },
+  "mixins": [],
+  "depends": {
+    "fabricloader": ">=0.14.9",
+    "fabric": "*",
+    "minecraft": "1.19.2"
+  }
+}
