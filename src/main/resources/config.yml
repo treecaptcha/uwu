@@ -31,6 +31,9 @@ signs-uwuify: false
 # this settings is very dangerous
 books-uwuify: false
 
+# these settings are only applicable on Paper.
+animals-uwuify: true
+
 # these settings probably don't need to be touched
 
 # "paper" || "spigot" || "auto"

@@ -4,6 +4,8 @@ import com.google.gson.Gson;
 import io.github.ran.uwu.client.Uwuifier;
 import io.papermc.paper.event.player.AsyncChatDecorateEvent;
 import io.papermc.paper.event.player.AsyncChatEvent;
+import io.papermc.paper.event.player.PlayerNameEntityEvent;
+import ml.treecaptcha.uwuify.core.AdventureChat;
 import ml.treecaptcha.uwuify.core.Configuration;
 import ml.treecaptcha.uwuify.spigot.Uwuify;
 import net.kyori.adventure.text.Component;
@@ -37,17 +39,21 @@ public class PaperUwuHandler implements Listener {
     @EventHandler
     public void onBook(PlayerEditBookEvent e) {
         if(!Uwuify.BOOKS_UWUIFY) return;
-
-        PlainTextComponentSerializer serializer = PlainTextComponentSerializer.plainText();
         BookMeta meta = e.getNewBookMeta();
 
         for(int i = 0; i < meta.getPageCount(); i++) {
-            meta.page(i+1, Component.text(Uwuifier.uwuify(serializer.serialize(meta.page(i+1)))));
+            meta.page(i+1, Component.text(Uwuifier.uwuify(AdventureChat.twoString(meta.page(i+1)))));
         }
 
         if(meta.title() != null) {
-            meta.title(Component.text(Uwuifier.uwuify(serializer.serialize(meta.title()))));
+            meta.title(Component.text(Uwuifier.uwuify(AdventureChat.twoString(meta.title()))));
         }
         e.setNewBookMeta(meta);
+    }
+
+    @EventHandler
+    public void onEntityName(PlayerNameEntityEvent e) {
+        if(!Uwuify.ANIMALS_UWUIFY) return;
+        e.setName((Component.text(Uwuifier.uwuifyMessage(AdventureChat.twoString(e.getName())))));
     }
 }
