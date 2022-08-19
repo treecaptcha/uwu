@@ -13,5 +13,6 @@ public class Uwuify implements ModInitializer {
     @Override
     public void onInitialize() {
         LOGGER.info(Uwuifier.uwuify("give uwu sound effects cause idk where to get them"));
+        FabricUwuHandler.register();
     }
 }

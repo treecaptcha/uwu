@@ -7,7 +7,6 @@
     <groupId>ml.treecaptcha</groupId>
     <artifactId>uwuify</artifactId>
     <version>1.4.0</version>
-    <packaging>jar</packaging>
     <name>Uwuify</name>
 
     <properties>
@@ -15,6 +14,9 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <fabric_api_version>0.60.0+1.19.2</fabric_api_version>
         <fabric_loader_version>0.14.9</fabric_loader_version>
+        <tiny_version>0.8.6</tiny_version>
+        <yarn_mappings_version>1.19.2+build.4</yarn_mappings_version>
+        <minecraft_version>1.19.2</minecraft_version>
     </properties>
 
     <build>
@@ -27,6 +29,26 @@
                     <source>${java.version}</source>
                     <target>${java.version}</target>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>2.4</version>
+                <executions>
+                    <execution>
+                        <id>default-jar</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                        <configuration>
+                            <excludes>
+                                <!-- Everything inside net.minecraft is not included -->
+                                <exclude>net/minecraft/*</exclude>
+                            </excludes>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
