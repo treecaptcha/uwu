@@ -1,5 +1,8 @@
 package net.minecraft;
 
-public class class_7471 {
+/**
+ * 	signature
+ */
+public enum class_7471 {
 
 }
