@@ -1,10 +1,8 @@
 package ml.treecaptcha.uwuify.sponge;
 
 import io.github.ran.uwu.client.Uwuifier;
-
 import ml.treecaptcha.uwuify.core.AdventureChat;
 import org.spongepowered.api.event.Listener;
-import org.spongepowered.api.event.message.MessageEvent;
 import org.spongepowered.api.event.message.PlayerChatEvent;
 
 public class SpongeUwuHandler {

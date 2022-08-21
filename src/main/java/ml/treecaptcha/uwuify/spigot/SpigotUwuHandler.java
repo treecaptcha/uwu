@@ -1,11 +1,8 @@
 package ml.treecaptcha.uwuify.spigot;
 
 import io.github.ran.uwu.client.Uwuifier;
-
-import ml.treecaptcha.uwuify.core.AdventureChat;
-import net.kyori.adventure.text.Component;
-import org.bukkit.event.Listener;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
 import org.bukkit.event.block.SignChangeEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerEditBookEvent;

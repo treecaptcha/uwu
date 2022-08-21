@@ -1,26 +1,18 @@
 package ml.treecaptcha.uwuify.paper;
 
-import com.google.gson.Gson;
 import io.github.ran.uwu.client.Uwuifier;
-import io.papermc.paper.event.player.AsyncChatDecorateEvent;
-import io.papermc.paper.event.player.AsyncChatEvent;
 import io.papermc.paper.event.player.PlayerNameEntityEvent;
 import ml.treecaptcha.uwuify.core.AdventureChat;
-import ml.treecaptcha.uwuify.core.Configuration;
 import ml.treecaptcha.uwuify.spigot.Uwuify;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerEditBookEvent;
 import org.bukkit.inventory.AnvilInventory;
 import org.bukkit.inventory.meta.BookMeta;
 import org.bukkit.inventory.meta.ItemMeta;
-
-import java.util.logging.Level;
 
 public class PaperUwuHandler implements Listener {
 
