@@ -45,6 +45,7 @@ public class SpigotUwuHandler implements Listener {
         if (e.getCurrentItem() == null) return;
         if (e.getClickedInventory() instanceof AnvilInventory) return;
         if (e.getSlot() != 2) return;
+        if(e.getInventory().getItem(1) == null || e.getInventory().getItem(1).getType() == e.getInventory().getItem(2).getType()) return;
         if (e.getCurrentItem().hasItemMeta() && e.getCurrentItem().getItemMeta().hasDisplayName()) {
             ItemMeta meta = e.getCurrentItem().getItemMeta();
             if (!meta.getDisplayName().equals(e.getInventory().getItem(0).getItemMeta().getDisplayName())) {
