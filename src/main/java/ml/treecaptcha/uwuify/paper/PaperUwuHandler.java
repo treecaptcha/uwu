@@ -55,23 +55,6 @@ public class PaperUwuHandler implements Listener {
     }
 
     @EventHandler
-    public void onInvClick(InventoryClickEvent e) {
-        if(!Uwuify.ITEM_NAMES_UWUIFY) return;
-        if(e.getCurrentItem() == null) return;
-        if(e.getClickedInventory() instanceof AnvilInventory) return;
-        if(e.getSlot() != 2) return;
-        if(e.getInventory().getItem(1) == null || e.getInventory().getItem(1).getType() == e.getInventory().getItem(2).getType()) return;
-        if(e.getCurrentItem().hasItemMeta() && e.getCurrentItem().getItemMeta().hasDisplayName()) {
-            ItemMeta meta = e.getCurrentItem().getItemMeta();
-            if(!AdventureChat.twoString(meta.displayName())
-                    .equals(AdventureChat.twoString(e.getInventory().getItem(1).displayName()))) {
-                meta.displayName(Component.text(Uwuifier.uwuifyMessage(AdventureChat.twoString(meta.displayName()))));
-                e.getCurrentItem().setItemMeta(meta);
-            }
-        }
-    }
-
-    @EventHandler
     public void onJoin(PlayerJoinEvent event) {
         if(!Uwuify.PLAYER_NAMES_UWUIFY) return;
         event.getPlayer().displayName(Component.text(Uwuifier.uwuifyName(AdventureChat.twoString(event.getPlayer().displayName()))));
