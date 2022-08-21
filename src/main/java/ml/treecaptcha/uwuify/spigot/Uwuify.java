@@ -23,6 +23,7 @@ public final class Uwuify extends JavaPlugin {
     public static boolean SIGNS_UWUIFY;
     public static boolean BOOKS_UWUIFY;
     public static boolean ANIMALS_UWUIFY;
+    public static boolean ITEM_NAMES_UWUIFY;
 
     public static String CHAT_HANDLER;
 
@@ -43,6 +44,7 @@ public final class Uwuify extends JavaPlugin {
         SIGNS_UWUIFY = uwu.getConfig().getBoolean("signs-uwuify");
         BOOKS_UWUIFY = uwu.getConfig().getBoolean("books-uwuify");
         ANIMALS_UWUIFY = uwu.getConfig().getBoolean("animals-uwuify");
+        ITEM_NAMES_UWUIFY = uwu.getConfig().getBoolean("item-names-uwuify");
         CHAT_HANDLER = uwu.getConfig().getString("chat-handler");
         PLATFORM = getPlatform();
         String rec = getDiscordSRVRecommendation();

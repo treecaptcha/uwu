@@ -13,9 +13,12 @@ import net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
+import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerEditBookEvent;
+import org.bukkit.inventory.AnvilInventory;
 import org.bukkit.inventory.meta.BookMeta;
+import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.logging.Level;
 
@@ -55,5 +58,18 @@ public class PaperUwuHandler implements Listener {
     public void onEntityName(PlayerNameEntityEvent e) {
         if(!Uwuify.ANIMALS_UWUIFY) return;
         e.setName((Component.text(Uwuifier.uwuifyMessage(AdventureChat.twoString(e.getName())))));
+    }
+
+    @EventHandler
+    public void onInvClick(InventoryClickEvent e) {
+        if(!Uwuify.ITEM_NAMES_UWUIFY) return;
+        if(e.getCurrentItem() == null) return;
+        if(e.getClickedInventory() instanceof AnvilInventory) return;
+        if(e.getSlot() != 2) return;
+        if(e.getCurrentItem().hasItemMeta() && e.getCurrentItem().getItemMeta().hasDisplayName()) {
+            ItemMeta meta = e.getCurrentItem().getItemMeta();
+            meta.displayName(Component.text(Uwuifier.uwuifyMessage(AdventureChat.twoString(meta.displayName()))));
+            e.getCurrentItem().setItemMeta(meta);
+        }
     }
 }
