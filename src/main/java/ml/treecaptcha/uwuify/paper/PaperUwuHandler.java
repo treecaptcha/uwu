@@ -68,8 +68,11 @@ public class PaperUwuHandler implements Listener {
         if(e.getSlot() != 2) return;
         if(e.getCurrentItem().hasItemMeta() && e.getCurrentItem().getItemMeta().hasDisplayName()) {
             ItemMeta meta = e.getCurrentItem().getItemMeta();
-            meta.displayName(Component.text(Uwuifier.uwuifyMessage(AdventureChat.twoString(meta.displayName()))));
-            e.getCurrentItem().setItemMeta(meta);
+            if(!AdventureChat.twoString(meta.displayName())
+                    .equals(AdventureChat.twoString(e.getInventory().getItem(1).displayName()))) {
+                meta.displayName(Component.text(Uwuifier.uwuifyMessage(AdventureChat.twoString(meta.displayName()))));
+                e.getCurrentItem().setItemMeta(meta);
+            }
         }
     }
 }
