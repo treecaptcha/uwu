@@ -29,6 +29,8 @@ use-chat-preview: true
 # these settings below affect gameplay, so they will stay off by default until there is a solution to make the uwufication client side only
 signs-uwuify: false
 item-names-uwuify: false
+player-names-uwuify: false
+join-messages-uwuify: false
 # this settings is very dangerous
 books-uwuify: false
 

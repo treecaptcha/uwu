@@ -6,6 +6,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.SignChangeEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerEditBookEvent;
+import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.AnvilInventory;
 import org.bukkit.inventory.meta.BookMeta;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -50,6 +51,17 @@ public class SpigotUwuHandler implements Listener {
                 e.getCurrentItem().setItemMeta(meta);
             }
         }
+    }
+
+    @EventHandler
+    public void onPlayerJoin(PlayerJoinEvent e) {
+        if(!Uwuify.PLAYER_NAMES_UWUIFY) return;
+        e.getPlayer().setDisplayName(Uwuifier.uwuifyName(e.getPlayer().getDisplayName()));
+        e.getPlayer().setCustomName(Uwuifier.uwuifyName(e.getPlayer().getDisplayName()));
+        e.getPlayer().setPlayerListName(Uwuifier.uwuifyName(e.getPlayer().getDisplayName()));
+        e.getPlayer().setCustomNameVisible(true);
+        if(!Uwuify.JOIN_MESSAGES_UWUIFY) return;
+        e.setJoinMessage(Uwuifier.uwuify(e.getJoinMessage()));
     }
 
 

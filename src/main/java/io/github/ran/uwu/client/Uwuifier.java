@@ -52,6 +52,10 @@ public class Uwuifier {
 
     }
 
+    public static String uwuifyName(String stringToUwuify) {
+        return stringToUwuify.toLowerCase().replaceAll("[rl]","w").replaceAll("n([aeiou])", "ny$1").replaceAll("ove", "uve").replaceAll("uck", "uwq").replaceFirst("i", "i-i").replaceFirst("(?s)(.*)" + "i-i-i", "$1" + "i-i");
+    }
+
     private static long stringToSeed(String stringToSeed) {
         long seed = 0;
         for(int i = 0; i < stringToSeed.length(); i++) {

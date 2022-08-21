@@ -9,7 +9,9 @@ import net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.player.PlayerAdvancementDoneEvent;
 import org.bukkit.event.player.PlayerEditBookEvent;
+import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.AnvilInventory;
 import org.bukkit.inventory.meta.BookMeta;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -67,5 +69,16 @@ public class PaperUwuHandler implements Listener {
                 e.getCurrentItem().setItemMeta(meta);
             }
         }
+    }
+
+    @EventHandler
+    public void onJoin(PlayerJoinEvent event) {
+        if(!Uwuify.PLAYER_NAMES_UWUIFY) return;
+        event.getPlayer().displayName(Component.text(Uwuifier.uwuifyName(AdventureChat.twoString(event.getPlayer().displayName()))));
+        event.getPlayer().customName(Component.text(Uwuifier.uwuifyName(AdventureChat.twoString(event.getPlayer().displayName()))));
+        event.getPlayer().playerListName(Component.text(Uwuifier.uwuifyName(AdventureChat.twoString(event.getPlayer().displayName()))));
+        event.getPlayer().setCustomNameVisible(true);
+        if(!Uwuify.JOIN_MESSAGES_UWUIFY) return;
+        event.joinMessage(Component.text(Uwuifier.uwuifyMessage(AdventureChat.twoString(event.joinMessage()))));
     }
 }

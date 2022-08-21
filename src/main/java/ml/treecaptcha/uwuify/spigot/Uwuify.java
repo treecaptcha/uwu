@@ -24,6 +24,8 @@ public final class Uwuify extends JavaPlugin {
     public static boolean BOOKS_UWUIFY;
     public static boolean ANIMALS_UWUIFY;
     public static boolean ITEM_NAMES_UWUIFY;
+    public static boolean PLAYER_NAMES_UWUIFY;
+    public static boolean JOIN_MESSAGES_UWUIFY;
 
     public static String CHAT_HANDLER;
 
@@ -41,10 +43,14 @@ public final class Uwuify extends JavaPlugin {
                 uwu.getLogger().log(Level.WARNING, Uwuifier.uwuify("Not enabling chat preview!"));
             }
         }
+
         SIGNS_UWUIFY = uwu.getConfig().getBoolean("signs-uwuify");
         BOOKS_UWUIFY = uwu.getConfig().getBoolean("books-uwuify");
         ANIMALS_UWUIFY = uwu.getConfig().getBoolean("animals-uwuify");
         ITEM_NAMES_UWUIFY = uwu.getConfig().getBoolean("item-names-uwuify");
+        PLAYER_NAMES_UWUIFY = uwu.getConfig().getBoolean("player-names-uwuify");
+        JOIN_MESSAGES_UWUIFY = uwu.getConfig().getBoolean("join-messages-uwuify");
+
         CHAT_HANDLER = uwu.getConfig().getString("chat-handler");
         PLATFORM = getPlatform();
         String rec = getDiscordSRVRecommendation();
