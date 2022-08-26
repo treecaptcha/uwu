@@ -8,13 +8,9 @@ import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.event.player.PlayerAdvancementDoneEvent;
 import org.bukkit.event.player.PlayerEditBookEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.inventory.AnvilInventory;
 import org.bukkit.inventory.meta.BookMeta;
-import org.bukkit.inventory.meta.ItemMeta;
 
 public class PaperUwuHandler implements Listener {
 
@@ -51,7 +47,7 @@ public class PaperUwuHandler implements Listener {
     @EventHandler
     public void onEntityName(PlayerNameEntityEvent e) {
         if(!Uwuify.ANIMALS_UWUIFY) return;
-        e.setName((Component.text(Uwuifier.uwuifyMessage(AdventureChat.twoString(e.getName())))));
+        e.setName(Component.text(Uwuifier.uwuifyMessage(AdventureChat.twoString(e.getName()))));
     }
 
     @EventHandler
