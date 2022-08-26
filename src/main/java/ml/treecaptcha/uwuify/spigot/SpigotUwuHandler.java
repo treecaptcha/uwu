@@ -39,13 +39,15 @@ public class SpigotUwuHandler implements Listener {
 
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent e) {
-        if(!Uwuify.PLAYER_NAMES_UWUIFY) return;
-        e.getPlayer().setDisplayName(Uwuifier.uwuifyName(e.getPlayer().getDisplayName()));
-        e.getPlayer().setCustomName(Uwuifier.uwuifyName(e.getPlayer().getDisplayName()));
-        e.getPlayer().setPlayerListName(Uwuifier.uwuifyName(e.getPlayer().getDisplayName()));
-        e.getPlayer().setCustomNameVisible(true);
-        if(!Uwuify.JOIN_MESSAGES_UWUIFY) return;
-        e.setJoinMessage(Uwuifier.uwuify(e.getJoinMessage()));
+        if(Uwuify.PLAYER_NAMES_UWUIFY) {
+            e.getPlayer().setDisplayName(Uwuifier.uwuifyName(e.getPlayer().getDisplayName()));
+            e.getPlayer().setCustomName(Uwuifier.uwuifyName(e.getPlayer().getDisplayName()));
+            e.getPlayer().setPlayerListName(Uwuifier.uwuifyName(e.getPlayer().getDisplayName()));
+            e.getPlayer().setCustomNameVisible(true);
+        }
+        if(Uwuify.JOIN_MESSAGES_UWUIFY) {
+            e.setJoinMessage(Uwuifier.uwuify(e.getJoinMessage()));
+        }
     }
 
 
