@@ -1,13 +1,9 @@
 package ml.treecaptcha.uwuify.sponge;
 
 import com.google.inject.Inject;
-
 import io.github.ran.uwu.client.Uwuifier;
-
 import ml.treecaptcha.uwuify.core.Configuration;
-
 import org.apache.logging.log4j.Logger;
-
 import org.spongepowered.api.Game;
 import org.spongepowered.api.Server;
 import org.spongepowered.api.Sponge;

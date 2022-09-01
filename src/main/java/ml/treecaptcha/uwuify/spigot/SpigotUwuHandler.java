@@ -1,12 +1,15 @@
 package ml.treecaptcha.uwuify.spigot;
 
 import io.github.ran.uwu.client.Uwuifier;
-
-import org.bukkit.event.Listener;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
 import org.bukkit.event.block.SignChangeEvent;
+import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerEditBookEvent;
+import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.inventory.AnvilInventory;
 import org.bukkit.inventory.meta.BookMeta;
+import org.bukkit.inventory.meta.ItemMeta;
 
 public class SpigotUwuHandler implements Listener {
 
@@ -32,6 +35,19 @@ public class SpigotUwuHandler implements Listener {
             meta.setTitle(Uwuifier.uwuify(meta.getTitle()));
         }
         event.setNewBookMeta(meta);
+    }
+
+    @EventHandler
+    public void onPlayerJoin(PlayerJoinEvent e) {
+        if(Uwuify.PLAYER_NAMES_UWUIFY) {
+            e.getPlayer().setDisplayName(Uwuifier.uwuifyName(e.getPlayer().getDisplayName()));
+            e.getPlayer().setCustomName(Uwuifier.uwuifyName(e.getPlayer().getDisplayName()));
+            e.getPlayer().setPlayerListName(Uwuifier.uwuifyName(e.getPlayer().getDisplayName()));
+            e.getPlayer().setCustomNameVisible(true);
+        }
+        if(Uwuify.JOIN_MESSAGES_UWUIFY) {
+            e.setJoinMessage(Uwuifier.uwuify(e.getJoinMessage()));
+        }
     }
 
 

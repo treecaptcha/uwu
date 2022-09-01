@@ -1,6 +1,5 @@
 package ml.treecaptcha.uwuify.core;
 
-import io.github.ran.uwu.client.Uwuifier;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer;
 

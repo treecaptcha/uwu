@@ -3,7 +3,6 @@ package ml.treecaptcha.uwuify.spigot;
 import io.github.ran.uwu.client.Uwuifier;
 import ml.treecaptcha.uwuify.core.Configuration;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.AsyncPlayerChatPreviewEvent;

@@ -25,11 +25,18 @@
 
 # this setting requires the previews-chat to be true in server.properties
 use-chat-preview: true
+# uwuify join messages?
+join-messages-uwuify: true
 
 # these settings below affect gameplay, so they will stay off by default until there is a solution to make the uwufication client side only
 signs-uwuify: false
+item-names-uwuify: false
+player-names-uwuify: false
 # this settings is very dangerous
 books-uwuify: false
+
+# these settings are only applicable on Paper.
+animals-uwuify: true
 
 # these settings probably don't need to be touched
 
