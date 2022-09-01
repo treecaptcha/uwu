@@ -44,7 +44,7 @@ public class PaperUwuHandler implements Listener {
     @EventHandler
     public void onEntityName(PlayerNameEntityEvent e) {
         if (!Uwuify.ANIMALS_UWUIFY) return;
-        e.setName(Component.text(Uwuifier.uwuifyMessage(AdventureChat.twoString(e.getName()))));
+        e.setName(Component.text(Uwuifier.uwuify(AdventureChat.twoString(e.getName()))));
     }
 
     @EventHandler
