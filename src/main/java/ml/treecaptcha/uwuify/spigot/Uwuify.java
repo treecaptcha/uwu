@@ -4,6 +4,8 @@ import io.github.ran.uwu.client.Uwuifier;
 import ml.treecaptcha.uwuify.core.Configuration;
 import ml.treecaptcha.uwuify.paper.PaperChatHandler;
 import ml.treecaptcha.uwuify.paper.PaperUwuHandler;
+import ml.treecaptcha.uwuify.spigot.commands.UwUCommands;
+import org.bukkit.NamespacedKey;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.Plugin;
@@ -16,6 +18,7 @@ import java.util.List;
 import java.util.logging.Level;
 
 public final class Uwuify extends JavaPlugin {
+    public static NamespacedKey UWUIFY_KEY;
     public static Uwuify uwu;
     /**
      * Should signs be uwuified?
@@ -26,6 +29,7 @@ public final class Uwuify extends JavaPlugin {
     public static boolean ITEM_NAMES_UWUIFY;
     public static boolean PLAYER_NAMES_UWUIFY;
     public static boolean JOIN_MESSAGES_UWUIFY;
+    public static boolean ALLOW_TOGGLE;
 
     public static String CHAT_HANDLER;
 
@@ -50,6 +54,9 @@ public final class Uwuify extends JavaPlugin {
         ITEM_NAMES_UWUIFY = uwu.getConfig().getBoolean("item-names-uwuify");
         PLAYER_NAMES_UWUIFY = uwu.getConfig().getBoolean("player-names-uwuify");
         JOIN_MESSAGES_UWUIFY = uwu.getConfig().getBoolean("join-messages-uwuify");
+        ALLOW_TOGGLE = uwu.getConfig().getBoolean("allow-toggle");
+
+        UWUIFY_KEY = new NamespacedKey(uwu, "uwuify");
 
         CHAT_HANDLER = uwu.getConfig().getString("chat-handler");
         PLATFORM = getPlatform();
@@ -128,6 +135,7 @@ public final class Uwuify extends JavaPlugin {
         listeners.add(getChatHandler());
         listeners.add(getUwuHandler());
         registerListeners(this, listeners);
+        getCommand("toggleuwu").setExecutor(new UwUCommands());
     }
 
     @Override
