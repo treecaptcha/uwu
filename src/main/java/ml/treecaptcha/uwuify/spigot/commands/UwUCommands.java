@@ -51,8 +51,8 @@ public class UwUCommands implements CommandExecutor, TabCompleter {
         return false;
     }
 
-    public static boolean isEnabled(Player p){
-        return Boolean.parseBoolean(p.getPersistentDataContainer().getOrDefault(Uwuify.UWUIFY_KEY, PersistentDataType.STRING, "true"));
+    public static boolean isEnabled(Player p, NamespacedKey key) {
+        return !Boolean.parseBoolean(p.getPersistentDataContainer().getOrDefault(Uwuify.UWUIFY_KEY, PersistentDataType.STRING, "true")) && Boolean.parseBoolean(p.getPersistentDataContainer().getOrDefault(key, PersistentDataType.STRING, "true"));
     }
 
     public static boolean togglePlayerUwUify(Player p, NamespacedKey key) {

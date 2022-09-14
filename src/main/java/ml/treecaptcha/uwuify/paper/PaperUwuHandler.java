@@ -3,7 +3,9 @@ package ml.treecaptcha.uwuify.paper;
 import io.github.ran.uwu.client.Uwuifier;
 import io.papermc.paper.event.player.PlayerNameEntityEvent;
 import ml.treecaptcha.uwuify.core.AdventureChat;
+import ml.treecaptcha.uwuify.spigot.KeyHolder;
 import ml.treecaptcha.uwuify.spigot.Uwuify;
+import ml.treecaptcha.uwuify.spigot.commands.UwUCommands;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer;
 import org.bukkit.event.EventHandler;
@@ -18,6 +20,7 @@ public class PaperUwuHandler implements Listener {
     @EventHandler
     public void onSignChange(org.bukkit.event.block.SignChangeEvent e) {
         if (!Uwuify.SIGNS_UWUIFY) return;
+        if(!UwUCommands.isEnabled(e.getPlayer(), KeyHolder.UWUIFY_SIGNS)) return;
         PlainTextComponentSerializer serializer = PlainTextComponentSerializer.plainText();
         for (int i = 0; i < e.lines().size(); i++) {
             if ("".equals(serializer.serialize(e.lines().get(i)))) continue;
@@ -29,6 +32,7 @@ public class PaperUwuHandler implements Listener {
     @EventHandler
     public void onBook(PlayerEditBookEvent e) {
         if (!Uwuify.BOOKS_UWUIFY) return;
+        if(!UwUCommands.isEnabled(e.getPlayer(), KeyHolder.UWUIFY_BOOKS)) return;
         BookMeta meta = e.getNewBookMeta();
 
         for (int i = 0; i < meta.getPageCount(); i++) {
@@ -44,11 +48,13 @@ public class PaperUwuHandler implements Listener {
     @EventHandler
     public void onEntityName(PlayerNameEntityEvent e) {
         if (!Uwuify.ANIMALS_UWUIFY) return;
+        if(!UwUCommands.isEnabled(e.getPlayer(), KeyHolder.UWUIFY_ANIMALS)) return;
         e.setName(Component.text(Uwuifier.uwuify(AdventureChat.twoString(e.getName()))));
     }
 
     @EventHandler
     public void onJoin(PlayerJoinEvent event) {
+        if(!UwUCommands.isEnabled(event.getPlayer(), KeyHolder.UWUIFY_JOIN_MESSAGES)) return;
         if (Uwuify.PLAYER_NAMES_UWUIFY) {
             event.getPlayer().displayName(Component.text(Uwuifier.uwuifyName(AdventureChat.twoString(event.getPlayer().displayName()))));
             event.getPlayer().customName(Component.text(Uwuifier.uwuifyName(AdventureChat.twoString(event.getPlayer().displayName()))));
