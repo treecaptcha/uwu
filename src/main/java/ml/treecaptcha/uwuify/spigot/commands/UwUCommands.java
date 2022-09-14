@@ -2,6 +2,7 @@ package ml.treecaptcha.uwuify.spigot.commands;
 
 import ml.treecaptcha.uwuify.spigot.KeyHolder;
 import ml.treecaptcha.uwuify.spigot.Uwuify;
+import org.bukkit.NamespacedKey;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -19,71 +20,29 @@ public class UwUCommands implements CommandExecutor, TabCompleter {
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String s, @NotNull String[] strings) {
         if(Uwuify.ALLOW_TOGGLE && sender instanceof Player p) {
             if(strings == null) {
-                Uwuify.uwu.getLogger().info("uwuify: " + p.getPersistentDataContainer().get(Uwuify.UWUIFY_KEY, PersistentDataType.STRING));
-                p.getPersistentDataContainer().set(Uwuify.UWUIFY_KEY, PersistentDataType.STRING,
-                        (Boolean.parseBoolean(p.getPersistentDataContainer().get(Uwuify.UWUIFY_KEY, PersistentDataType.STRING))) ? "false" : "true");
-                p.sendMessage("UwUify " + (Boolean.parseBoolean(p.getPersistentDataContainer().get(Uwuify.UWUIFY_KEY, PersistentDataType.STRING)) ? "disabled" : "enabled"));
-                Uwuify.uwu.getLogger().info("uwuify: " + p.getPersistentDataContainer().get(Uwuify.UWUIFY_KEY, PersistentDataType.STRING));
+                return togglePlayerUwUify(p, Uwuify.UWUIFY_KEY);
             } else {
                 switch (strings[0]) {
                     case "chat" -> {
-                        Uwuify.uwu.getLogger().info("uwuify: " + p.getPersistentDataContainer().get(KeyHolder.UWUIFY_CHAT, PersistentDataType.STRING));
-                        p.getPersistentDataContainer().set(KeyHolder.UWUIFY_CHAT, PersistentDataType.STRING,
-                                (Boolean.parseBoolean(p.getPersistentDataContainer().get(KeyHolder.UWUIFY_CHAT, PersistentDataType.STRING))) ? "false" : "true");
-                        p.sendMessage("UwUify " + (Boolean.parseBoolean(p.getPersistentDataContainer().get(KeyHolder.UWUIFY_CHAT, PersistentDataType.STRING)) ? "disabled" : "enabled"));
-                        Uwuify.uwu.getLogger().info("uwuify: " + p.getPersistentDataContainer().get(KeyHolder.UWUIFY_CHAT, PersistentDataType.STRING));
+                        return togglePlayerUwUify(p, KeyHolder.UWUIFY_CHAT);
                     }
                     case "books" -> {
-                        Uwuify.uwu.getLogger().info("uwuify: " + p.getPersistentDataContainer().get(KeyHolder.UWUIFY_BOOKS, PersistentDataType.STRING));
-                        p.getPersistentDataContainer().set(KeyHolder.UWUIFY_BOOKS, PersistentDataType.STRING,
-                                (Boolean.parseBoolean(p.getPersistentDataContainer().get(KeyHolder.UWUIFY_BOOKS, PersistentDataType.STRING))) ? "false" : "true");
-                        p.sendMessage("UwUify " + (Boolean.parseBoolean(p.getPersistentDataContainer().get(KeyHolder.UWUIFY_BOOKS, PersistentDataType.STRING)) ? "disabled" : "enabled"));
-                        Uwuify.uwu.getLogger().info("uwuify: " + p.getPersistentDataContainer().get(KeyHolder.UWUIFY_BOOKS, PersistentDataType.STRING));
+                        return togglePlayerUwUify(p, KeyHolder.UWUIFY_BOOKS);
                     }
                     case "signs" -> {
-                        Uwuify.uwu.getLogger().info("uwuify: " + p.getPersistentDataContainer().get(KeyHolder.UWUIFY_SIGNS, PersistentDataType.STRING));
-                        p.getPersistentDataContainer().set(KeyHolder.UWUIFY_SIGNS, PersistentDataType.STRING,
-                                (Boolean.parseBoolean(p.getPersistentDataContainer().get(KeyHolder.UWUIFY_SIGNS, PersistentDataType.STRING))) ? "false" : "true");
-                        p.sendMessage("UwUify " + (Boolean.parseBoolean(p.getPersistentDataContainer().get(KeyHolder.UWUIFY_SIGNS, PersistentDataType.STRING)) ? "disabled" : "enabled"));
-                        Uwuify.uwu.getLogger().info("uwuify: " + p.getPersistentDataContainer().get(KeyHolder.UWUIFY_SIGNS, PersistentDataType.STRING));
+                        return togglePlayerUwUify(p, KeyHolder.UWUIFY_SIGNS);
                     }
                     case "animal_names" -> {
-                        Uwuify.uwu.getLogger().info("uwuify: " + p.getPersistentDataContainer().get(KeyHolder.UWUIFY_ANIMALS, PersistentDataType.STRING));
-                        p.getPersistentDataContainer().set(KeyHolder.UWUIFY_ANIMALS, PersistentDataType.STRING,
-                                (Boolean.parseBoolean(p.getPersistentDataContainer().get(KeyHolder.UWUIFY_ANIMALS, PersistentDataType.STRING))) ? "false" : "true");
-                        p.sendMessage("UwUify " + (Boolean.parseBoolean(p.getPersistentDataContainer().get(KeyHolder.UWUIFY_ANIMALS, PersistentDataType.STRING)) ? "disabled" : "enabled"));
-                        Uwuify.uwu.getLogger().info("uwuify: " + p.getPersistentDataContainer().get(KeyHolder.UWUIFY_ANIMALS, PersistentDataType.STRING));
+                        return togglePlayerUwUify(p, KeyHolder.UWUIFY_ANIMALS);
                     }
                     case "join_message" -> {
-                        Uwuify.uwu.getLogger().info("uwuify: " + p.getPersistentDataContainer().get(KeyHolder.UWUIFY_JOIN_MESSAGES, PersistentDataType.STRING));
-                        p.getPersistentDataContainer().set(KeyHolder.UWUIFY_JOIN_MESSAGES, PersistentDataType.STRING,
-                                (Boolean.parseBoolean(p.getPersistentDataContainer().get(KeyHolder.UWUIFY_JOIN_MESSAGES, PersistentDataType.STRING))) ? "false" : "true");
-                        p.sendMessage("UwUify " + (Boolean.parseBoolean(p.getPersistentDataContainer().get(KeyHolder.UWUIFY_JOIN_MESSAGES, PersistentDataType.STRING)) ? "disabled" : "enabled"));
-                        Uwuify.uwu.getLogger().info("uwuify: " + p.getPersistentDataContainer().get(KeyHolder.UWUIFY_JOIN_MESSAGES, PersistentDataType.STRING));
+                        return togglePlayerUwUify(p, KeyHolder.UWUIFY_JOIN_MESSAGES);
                     }
                     case "player_name" -> {
-                        Uwuify.uwu.getLogger().info("uwuify: " + p.getPersistentDataContainer().get(KeyHolder.UWUIFY_PLAYER_NAME, PersistentDataType.STRING));
-                        p.getPersistentDataContainer().set(KeyHolder.UWUIFY_PLAYER_NAME, PersistentDataType.STRING,
-                                (Boolean.parseBoolean(p.getPersistentDataContainer().get(KeyHolder.UWUIFY_PLAYER_NAME, PersistentDataType.STRING))) ? "false" : "true");
-                        p.sendMessage("UwUify " + (Boolean.parseBoolean(p.getPersistentDataContainer().get(KeyHolder.UWUIFY_PLAYER_NAME, PersistentDataType.STRING)) ? "disabled" : "enabled"));
-                        Uwuify.uwu.getLogger().info("uwuify: " + p.getPersistentDataContainer().get(KeyHolder.UWUIFY_PLAYER_NAME, PersistentDataType.STRING));
+                        return togglePlayerUwUify(p, KeyHolder.UWUIFY_PLAYER_NAME);
                     }
                     case "all" -> {
-                        Uwuify.uwu.getLogger().info("uwuify: " + p.getPersistentDataContainer().get(Uwuify.UWUIFY_KEY, PersistentDataType.STRING));
-                        p.getPersistentDataContainer().set(Uwuify.UWUIFY_KEY, PersistentDataType.STRING,
-                                (Boolean.parseBoolean(p.getPersistentDataContainer().get(Uwuify.UWUIFY_KEY, PersistentDataType.STRING))) ? "false" : "true");
-                        p.sendMessage("UwUify " + (Boolean.parseBoolean(p.getPersistentDataContainer().get(Uwuify.UWUIFY_KEY, PersistentDataType.STRING)) ? "disabled" : "enabled"));
-                        Uwuify.uwu.getLogger().info("uwuify: " + p.getPersistentDataContainer().get(Uwuify.UWUIFY_KEY, PersistentDataType.STRING));
-                        Uwuify.uwu.getLogger().info("uwuify: " + p.getPersistentDataContainer().get(KeyHolder.UWUIFY_CHAT, PersistentDataType.STRING));
-                        p.getPersistentDataContainer().set(KeyHolder.UWUIFY_CHAT, PersistentDataType.STRING,
-                                (Boolean.parseBoolean(p.getPersistentDataContainer().get(KeyHolder.UWUIFY_CHAT, PersistentDataType.STRING))) ? "false" : "true");
-                        p.sendMessage("UwUify " + (Boolean.parseBoolean(p.getPersistentDataContainer().get(KeyHolder.UWUIFY_CHAT, PersistentDataType.STRING)) ? "disabled" : "enabled"));
-                        Uwuify.uwu.getLogger().info("uwuify: " + p.getPersistentDataContainer().get(KeyHolder.UWUIFY_CHAT, PersistentDataType.STRING));
-                        Uwuify.uwu.getLogger().info("uwuify: " + p.getPersistentDataContainer().get(KeyHolder.UWUIFY_BOOKS, PersistentDataType.STRING));
-                        p.getPersistentDataContainer().set(KeyHolder.UWUIFY_BOOKS, PersistentDataType.STRING,
-                                (Boolean.parseBoolean(p.getPersistentDataContainer().get(KeyHolder.UWUIFY_BOOKS, PersistentDataType.STRING))) ? "false" : "true");
-                        p.sendMessage("UwUify " + (Boolean.parseBoolean(p.getPersistentDataContainer().get(KeyHolder.UWUIFY_BOOKS, PersistentDataType.STRING)) ? "disabled" : "enabled"));
-                        Uwuify.uwu.getLogger().info("uwuify: " + p.getPersistentDataContainer().get(KeyHolder.UWUIFY_BOOKS, PersistentDataType.STRING));
+                        return togglePlayerUwUify(p, Uwuify.UWUIFY_KEY);
                     }
                 }
             }
@@ -94,6 +53,15 @@ public class UwUCommands implements CommandExecutor, TabCompleter {
 
     public static boolean isEnabled(Player p){
         return Boolean.parseBoolean(p.getPersistentDataContainer().getOrDefault(Uwuify.UWUIFY_KEY, PersistentDataType.STRING, "true"));
+    }
+
+    public static boolean togglePlayerUwUify(Player p, NamespacedKey key) {
+        Uwuify.uwu.getLogger().info("uwuify: " + p.getPersistentDataContainer().get(key, PersistentDataType.STRING));
+        p.getPersistentDataContainer().set(key, PersistentDataType.STRING,
+                (Boolean.parseBoolean(p.getPersistentDataContainer().get(key, PersistentDataType.STRING))) ? "false" : "true");
+        p.sendMessage("UwUify " + (Boolean.parseBoolean(p.getPersistentDataContainer().get(key, PersistentDataType.STRING)) ? "disabled" : "enabled"));
+        Uwuify.uwu.getLogger().info("uwuify: " + p.getPersistentDataContainer().get(key, PersistentDataType.STRING));
+        return true;
     }
 
     @Override

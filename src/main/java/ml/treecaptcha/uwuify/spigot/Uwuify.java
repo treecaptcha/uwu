@@ -18,7 +18,6 @@ import java.util.List;
 import java.util.logging.Level;
 
 public final class Uwuify extends JavaPlugin {
-    public static NamespacedKey UWUIFY_KEY;
     public static Uwuify uwu;
     /**
      * Should signs be uwuified?
@@ -30,6 +29,8 @@ public final class Uwuify extends JavaPlugin {
     public static boolean PLAYER_NAMES_UWUIFY;
     public static boolean JOIN_MESSAGES_UWUIFY;
     public static boolean ALLOW_TOGGLE;
+
+    public static NamespacedKey UWUIFY_KEY;
 
     public static String CHAT_HANDLER;
 
