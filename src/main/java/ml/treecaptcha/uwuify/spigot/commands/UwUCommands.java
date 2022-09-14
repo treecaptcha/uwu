@@ -71,8 +71,4 @@ public class UwUCommands implements CommandExecutor, TabCompleter {
         }
         return null;
     }
-
-    //TODO: Make tab complete for the command, allowing the player to choose which features to toggle
-
-
 }
