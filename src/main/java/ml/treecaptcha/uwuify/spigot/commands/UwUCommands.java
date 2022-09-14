@@ -56,11 +56,9 @@ public class UwUCommands implements CommandExecutor, TabCompleter {
     }
 
     public static boolean togglePlayerUwUify(Player p, NamespacedKey key) {
-        Uwuify.uwu.getLogger().info("uwuify: " + p.getPersistentDataContainer().get(key, PersistentDataType.STRING));
         p.getPersistentDataContainer().set(key, PersistentDataType.STRING,
                 (Boolean.parseBoolean(p.getPersistentDataContainer().get(key, PersistentDataType.STRING))) ? "false" : "true");
         p.sendMessage("UwUify " + (Boolean.parseBoolean(p.getPersistentDataContainer().get(key, PersistentDataType.STRING)) ? "disabled" : "enabled"));
-        Uwuify.uwu.getLogger().info("uwuify: " + p.getPersistentDataContainer().get(key, PersistentDataType.STRING));
         return true;
     }
 
