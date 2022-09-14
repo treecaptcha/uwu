@@ -136,6 +136,7 @@ public final class Uwuify extends JavaPlugin {
         listeners.add(getUwuHandler());
         registerListeners(this, listeners);
         getCommand("toggleuwu").setExecutor(new UwUCommands());
+        KeyHolder.init();
     }
 
     @Override
