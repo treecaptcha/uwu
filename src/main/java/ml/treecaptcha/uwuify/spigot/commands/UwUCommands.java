@@ -19,7 +19,7 @@ public class UwUCommands implements CommandExecutor, TabCompleter {
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String s, @NotNull String[] strings) {
         if(Uwuify.ALLOW_TOGGLE && sender instanceof Player p) {
-            if(strings == null) {
+            if(strings.length == 0) {
                 return togglePlayerUwUify(p, Uwuify.UWUIFY_KEY);
             } else {
                 switch (strings[0]) {
