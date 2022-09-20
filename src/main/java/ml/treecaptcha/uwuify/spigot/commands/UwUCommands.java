@@ -2,6 +2,7 @@ package ml.treecaptcha.uwuify.spigot.commands;
 
 import ml.treecaptcha.uwuify.spigot.KeyHolder;
 import ml.treecaptcha.uwuify.spigot.Uwuify;
+import net.kyori.adventure.text.Component;
 import org.bukkit.NamespacedKey;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -15,6 +16,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 public class UwUCommands implements CommandExecutor, TabCompleter {
+    private static final List<String> TAB_COMPLETE = List.of("chat", "signs", "books", "names", "join", "all", "animal_names");
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String s, @NotNull String[] strings) {
@@ -52,20 +54,21 @@ public class UwUCommands implements CommandExecutor, TabCompleter {
     }
 
     public static boolean isEnabled(Player p, NamespacedKey key) {
-        return !Boolean.parseBoolean(p.getPersistentDataContainer().getOrDefault(Uwuify.UWUIFY_KEY, PersistentDataType.STRING, "true")) && Boolean.parseBoolean(p.getPersistentDataContainer().getOrDefault(key, PersistentDataType.STRING, "true"));
+        return p.getPersistentDataContainer().has(key, BooleanPersistentDataType.INSTANCE) || p.getPersistentDataContainer().get(key, BooleanPersistentDataType.INSTANCE) == Boolean.TRUE;
     }
 
     public static boolean togglePlayerUwUify(Player p, NamespacedKey key) {
-        p.getPersistentDataContainer().set(key, PersistentDataType.STRING,
-                (Boolean.parseBoolean(p.getPersistentDataContainer().get(key, PersistentDataType.STRING))) ? "false" : "true");
-        p.sendMessage("UwUify " + (Boolean.parseBoolean(p.getPersistentDataContainer().get(key, PersistentDataType.STRING)) ? "disabled" : "enabled"));
+        Uwuify.uwu.getLogger().info(p.getName() + " currently has " + (isEnabled(p, key) ? "enabled" : "disabled") + " for " + key.getKey());
+        p.getPersistentDataContainer().set(key, BooleanPersistentDataType.INSTANCE, !isEnabled(p, key));
+        p.sendMessage(Component.text("UwUify " + (isEnabled(p, key) ? "enabled" : "disabled") + " for " + key.getKey()));
+        Uwuify.uwu.getLogger().info(p.getName() + " toggled UwUify " + (isEnabled(p, key) ? "enabled" : "disabled") + " for " + key.getKey());
         return true;
     }
 
     @Override
     public @Nullable List<String> onTabComplete(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String[] strings) {
         if (Uwuify.ALLOW_TOGGLE && commandSender instanceof Player p) {
-            return List.of("chat", "signs", "books", "names", "join", "all", "animal_names");
+            return TAB_COMPLETE;
         }
         return null;
     }
