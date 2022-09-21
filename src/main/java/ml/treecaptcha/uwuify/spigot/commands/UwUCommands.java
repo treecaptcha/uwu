@@ -21,7 +21,7 @@ public class UwUCommands implements CommandExecutor, TabCompleter {
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String s, @NotNull String[] strings) {
         if(Uwuify.ALLOW_TOGGLE && sender instanceof Player p) {
-            if(strings.length == 0) {
+            if(strings.length ==  0) {
                 return togglePlayerUwUify(p, Uwuify.UWUIFY_KEY);
             } else {
                 switch (strings[0]) {
@@ -40,7 +40,7 @@ public class UwUCommands implements CommandExecutor, TabCompleter {
                     case "join_message" -> {
                         return togglePlayerUwUify(p, KeyHolder.UWUIFY_JOIN_MESSAGES);
                     }
-                    case "player_name" -> {
+                    case "names" -> {
                         return togglePlayerUwUify(p, KeyHolder.UWUIFY_PLAYER_NAME);
                     }
                     case "all" -> {
@@ -54,14 +54,15 @@ public class UwUCommands implements CommandExecutor, TabCompleter {
     }
 
     public static boolean isEnabled(Player p, NamespacedKey key) {
-        return p.getPersistentDataContainer().has(key, BooleanPersistentDataType.INSTANCE) || p.getPersistentDataContainer().get(key, BooleanPersistentDataType.INSTANCE) == Boolean.TRUE;
+        if(!p.getPersistentDataContainer().has(key, PersistentDataType.BYTE) || !p.getPersistentDataContainer().has(Uwuify.UWUIFY_KEY, PersistentDataType.BYTE)) {
+            return true;
+        }
+        return p.getPersistentDataContainer().get(key, PersistentDataType.BYTE) == 1 && p.getPersistentDataContainer().get(Uwuify.UWUIFY_KEY, PersistentDataType.BYTE) ==  1;
     }
 
     public static boolean togglePlayerUwUify(Player p, NamespacedKey key) {
-        Uwuify.uwu.getLogger().info(p.getName() + " currently has " + (isEnabled(p, key) ? "enabled" : "disabled") + " for " + key.getKey());
-        p.getPersistentDataContainer().set(key, BooleanPersistentDataType.INSTANCE, !isEnabled(p, key));
+        p.getPersistentDataContainer().set(key, PersistentDataType.BYTE, (byte) (isEnabled(p, key) ?  0 :  1));
         p.sendMessage(Component.text("UwUify " + (isEnabled(p, key) ? "enabled" : "disabled") + " for " + key.getKey()));
-        Uwuify.uwu.getLogger().info(p.getName() + " toggled UwUify " + (isEnabled(p, key) ? "enabled" : "disabled") + " for " + key.getKey());
         return true;
     }
 
