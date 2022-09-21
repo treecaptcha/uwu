@@ -11,3 +11,4 @@ commands:
   toggleuwu:
     description: Toggles uwuification
     usage: /toggleuwu
+    permission: uwuify.toggle

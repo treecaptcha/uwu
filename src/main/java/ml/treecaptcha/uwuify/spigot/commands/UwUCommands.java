@@ -21,6 +21,10 @@ public class UwUCommands implements CommandExecutor, TabCompleter {
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String s, @NotNull String[] strings) {
         if(Uwuify.ALLOW_TOGGLE && sender instanceof Player p) {
+            if(!p.hasPermission("uwuify.toggle")) {
+                p.sendMessage(Component.text("You do not have permission to use this command!"));
+                return true;
+            }
             if(strings.length ==  0) {
                 return togglePlayerUwUify(p, Uwuify.UWUIFY_KEY);
             } else {
