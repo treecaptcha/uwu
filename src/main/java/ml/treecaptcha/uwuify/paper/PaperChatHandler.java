@@ -11,6 +11,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 
 public class PaperChatHandler implements Listener {
+    @SuppressWarnings("UnstableApiUsage")
     @EventHandler
     public void onPlayerPreview(AsyncChatDecorateEvent event) {
         if(event.isPreview() && !Configuration.USE_PREVIEW) return;
