@@ -58,14 +58,22 @@ public class UwUCommands implements CommandExecutor, TabCompleter {
     }
 
     public static boolean isEnabled(Player p, NamespacedKey key) {
-        if(!p.getPersistentDataContainer().has(key, PersistentDataType.BYTE) || !p.getPersistentDataContainer().has(Uwuify.UWUIFY_KEY, PersistentDataType.BYTE)) {
-            return true;
+        if(!p.getPersistentDataContainer().has(key, PersistentDataType.BYTE)) {
+            if(!p.getPersistentDataContainer().has(Uwuify.UWUIFY_KEY, PersistentDataType.BYTE)) {
+                return true;
+            } else {
+                return p.getPersistentDataContainer().get(Uwuify.UWUIFY_KEY, PersistentDataType.BYTE) == 1;
+            }
         }
-        return p.getPersistentDataContainer().get(key, PersistentDataType.BYTE) == 1 && p.getPersistentDataContainer().get(Uwuify.UWUIFY_KEY, PersistentDataType.BYTE) ==  1;
+        return p.getPersistentDataContainer().get(key, PersistentDataType.BYTE) == 1 && p.getPersistentDataContainer().get(Uwuify.UWUIFY_KEY, PersistentDataType.BYTE) == 1;
     }
 
     public static boolean togglePlayerUwUify(Player p, NamespacedKey key) {
-        p.getPersistentDataContainer().set(key, PersistentDataType.BYTE, (byte) (isEnabled(p, key) ?  0 :  1));
+        if(p.getPersistentDataContainer().has(key, PersistentDataType.BYTE)) {
+            p.getPersistentDataContainer().set(key, PersistentDataType.BYTE, (byte) (isEnabled(p, key) ? 0 : 1));
+        } else {
+            p.getPersistentDataContainer().set(key, PersistentDataType.BYTE, (byte) 0);
+        }
         p.sendMessage(Component.text("UwUify " + (isEnabled(p, key) ? "enabled" : "disabled") + " for " + key.getKey()));
         return true;
     }
