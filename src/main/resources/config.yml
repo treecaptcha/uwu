@@ -35,6 +35,9 @@ player-names-uwuify: false
 # this settings is very dangerous
 books-uwuify: false
 
+# this setting is for the uwuify commands
+allow-toggle: true
+
 # these settings are only applicable on Paper.
 animals-uwuify: true
 

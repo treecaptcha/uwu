@@ -6,3 +6,9 @@ authors: [ TreeCaptcha ]
 description: made with stolen code from Ran-helo/uwu
 website: http://treecaptcha.ml/
 softdepend: [ DiscordSRV ]
+
+commands:
+  toggleuwu:
+    description: Toggles uwuification
+    usage: /toggleuwu
+    permission: uwuify.toggle
