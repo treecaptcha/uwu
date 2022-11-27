@@ -36,6 +36,7 @@ player-names-uwuify: false
 books-uwuify: false
 
 # this setting is for the uwuify commands
+require-permission: false
 allow-toggle: true
 toggles:
   signs-uwuify: true

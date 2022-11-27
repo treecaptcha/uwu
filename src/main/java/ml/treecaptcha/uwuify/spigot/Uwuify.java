@@ -36,6 +36,7 @@ public final class Uwuify extends JavaPlugin {
     public static boolean ALLOW_TOGGLE_ITEM_NAMES;
     public static boolean ALLOW_TOGGLE_PLAYER_NAME;
     public static boolean ALLOW_TOGGLE_JOIN_MESSAGES;
+    public static boolean REQUIRE_PERMISSION;
 
 
     public static NamespacedKey UWUIFY_KEY;
@@ -64,6 +65,7 @@ public final class Uwuify extends JavaPlugin {
         PLAYER_NAMES_UWUIFY = uwu.getConfig().getBoolean("player-names-uwuify");
         JOIN_MESSAGES_UWUIFY = uwu.getConfig().getBoolean("join-messages-uwuify");
 
+        REQUIRE_PERMISSION = uwu.getConfig().getBoolean("require-permission");
         ALLOW_TOGGLE = uwu.getConfig().getBoolean("allow-toggle");
         ALLOW_TOGGLE_CHAT = uwu.getConfig().getBoolean("toggles.chat-uwuify");
         ALLOW_TOGGLE_BOOKS = uwu.getConfig().getBoolean("toggles.books-uwuify");
