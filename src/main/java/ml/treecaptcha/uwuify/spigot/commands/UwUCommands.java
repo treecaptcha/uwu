@@ -17,7 +17,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 public class UwUCommands implements CommandExecutor, TabCompleter {
-    private static final List<String> TAB_COMPLETE = List.of("chat", "signs", "books", "names", "join", "all", "animal_names");
+    private static final List<String> TAB_COMPLETE = List.of("chat", "signs", "books", "names", "join_message", "all", "animal_names");
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String s, @NotNull String[] strings) {
