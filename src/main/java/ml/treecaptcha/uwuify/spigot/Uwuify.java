@@ -29,6 +29,14 @@ public final class Uwuify extends JavaPlugin {
     public static boolean PLAYER_NAMES_UWUIFY;
     public static boolean JOIN_MESSAGES_UWUIFY;
     public static boolean ALLOW_TOGGLE;
+    public static boolean ALLOW_TOGGLE_CHAT;
+    public static boolean ALLOW_TOGGLE_SIGNS;
+    public static boolean ALLOW_TOGGLE_BOOKS;
+    public static boolean ALLOW_TOGGLE_ANIMALS;
+    public static boolean ALLOW_TOGGLE_ITEM_NAMES;
+    public static boolean ALLOW_TOGGLE_PLAYER_NAME;
+    public static boolean ALLOW_TOGGLE_JOIN_MESSAGES;
+
 
     public static NamespacedKey UWUIFY_KEY;
 
@@ -55,7 +63,14 @@ public final class Uwuify extends JavaPlugin {
         ITEM_NAMES_UWUIFY = uwu.getConfig().getBoolean("item-names-uwuify");
         PLAYER_NAMES_UWUIFY = uwu.getConfig().getBoolean("player-names-uwuify");
         JOIN_MESSAGES_UWUIFY = uwu.getConfig().getBoolean("join-messages-uwuify");
+
         ALLOW_TOGGLE = uwu.getConfig().getBoolean("allow-toggle");
+        ALLOW_TOGGLE_CHAT = uwu.getConfig().getBoolean("toggles.chat-uwuify");
+        ALLOW_TOGGLE_BOOKS = uwu.getConfig().getBoolean("toggles.books-uwuify");
+        ALLOW_TOGGLE_SIGNS = uwu.getConfig().getBoolean("toggles.signs-uwuify");
+        ALLOW_TOGGLE_ANIMALS = uwu.getConfig().getBoolean("toggles.animals-uwuify");
+        ALLOW_TOGGLE_PLAYER_NAME = uwu.getConfig().getBoolean("toggles.player-name-uwuify");
+        ALLOW_TOGGLE_JOIN_MESSAGES = uwu.getConfig().getBoolean("toggles.join-message-uwuify");
 
         UWUIFY_KEY = new NamespacedKey(uwu, "uwuify");
 

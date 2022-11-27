@@ -1,5 +1,6 @@
 package ml.treecaptcha.uwuify.spigot.commands;
 
+import io.github.ran.uwu.client.Uwuifier;
 import ml.treecaptcha.uwuify.spigot.KeyHolder;
 import ml.treecaptcha.uwuify.spigot.Uwuify;
 import net.kyori.adventure.text.Component;
@@ -30,22 +31,60 @@ public class UwUCommands implements CommandExecutor, TabCompleter {
             } else {
                 switch (strings[0]) {
                     case "chat" -> {
-                        return togglePlayerUwUify(p, KeyHolder.UWUIFY_CHAT);
+                        if(Uwuify.ALLOW_TOGGLE_CHAT) {
+                            return togglePlayerUwUify(p, KeyHolder.UWUIFY_CHAT);
+                        } else {
+                            p.sendMessage(Component.text("Chat uwuification is not toggleable!"));
+                            return true;
+                        }
                     }
                     case "books" -> {
-                        return togglePlayerUwUify(p, KeyHolder.UWUIFY_BOOKS);
+                        if(Uwuify.ALLOW_TOGGLE_BOOKS) {
+                            return togglePlayerUwUify(p, KeyHolder.UWUIFY_BOOKS);
+                        } else {
+                            p.sendMessage(Component.text("Book uwuification is not toggleable!"));
+                            return true;
+                        }
                     }
                     case "signs" -> {
-                        return togglePlayerUwUify(p, KeyHolder.UWUIFY_SIGNS);
+                        if(Uwuify.ALLOW_TOGGLE_SIGNS) {
+                            return togglePlayerUwUify(p, KeyHolder.UWUIFY_SIGNS);
+                        } else {
+                            p.sendMessage(Component.text("Sign uwuification is not toggleable!"));
+                            return true;
+                        }
                     }
                     case "animal_names" -> {
-                        return togglePlayerUwUify(p, KeyHolder.UWUIFY_ANIMALS);
+                        if(Uwuify.ALLOW_TOGGLE_ANIMALS) {
+                            return togglePlayerUwUify(p, KeyHolder.UWUIFY_ANIMALS);
+                        } else {
+                            p.sendMessage(Component.text("Animal name uwuification is not toggleable!"));
+                            return true;
+                        }
                     }
                     case "join_message" -> {
-                        return togglePlayerUwUify(p, KeyHolder.UWUIFY_JOIN_MESSAGES);
+                        if(Uwuify.ALLOW_TOGGLE_JOIN_MESSAGES) {
+                            return togglePlayerUwUify(p, KeyHolder.UWUIFY_JOIN_MESSAGES);
+                        } else {
+                            p.sendMessage(Component.text("Join message uwuification is not toggleable!"));
+                            return true;
+                        }
                     }
                     case "names" -> {
-                        return togglePlayerUwUify(p, KeyHolder.UWUIFY_PLAYER_NAME);
+                        if(isEnabled(p, KeyHolder.UWUIFY_PLAYER_NAME)){
+                            p.displayName(p.name());
+                            p.playerListName(p.name());
+                        }
+                        else{
+                            p.displayName(Component.text(Uwuifier.uwuify(p.getName())));
+                            p.playerListName(Component.text(Uwuifier.uwuify(p.getName())));
+                        }
+                        if (Uwuify.ALLOW_TOGGLE_PLAYER_NAME) {
+                            return togglePlayerUwUify(p, KeyHolder.UWUIFY_PLAYER_NAME);
+                        } else {
+                            p.sendMessage(Component.text("Player name uwuification is not toggleable!"));
+                            return true;
+                        }
                     }
                     case "all" -> {
                         return togglePlayerUwUify(p, Uwuify.UWUIFY_KEY);
