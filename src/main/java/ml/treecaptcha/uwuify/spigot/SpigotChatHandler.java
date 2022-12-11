@@ -14,12 +14,4 @@ public class SpigotChatHandler implements Listener {
         if(!UwUCommands.isEnabled(event.getPlayer(), KeyHolder.UWUIFY_CHAT)) return;
         event.setMessage(Uwuifier.uwuifyMessage(event.getMessage()));
     }
-
-    @EventHandler
-    public void onPlayerPreview(AsyncPlayerChatPreviewEvent event) {
-        if(!Configuration.USE_PREVIEW) return;
-        if(!UwUCommands.isEnabled(event.getPlayer(), KeyHolder.UWUIFY_CHAT)) return;
-        event.setMessage(Uwuifier.uwuifyMessage(event.getMessage()));
-    }
-
 }
