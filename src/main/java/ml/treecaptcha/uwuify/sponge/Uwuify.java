@@ -22,23 +22,13 @@ public class Uwuify {
     @Inject
     private Game game;
 
-    public static void load() {
-        Configuration.USE_PREVIEW = false;
-    }
-
     @Listener
     public void onServerStart(final StartedEngineEvent<Server> event) {
         logger.info(Uwuifier.uwuify("give uwu sound effects cause idk where to get them"));
         logger.info(Uwuifier.uwuify("Loading Sponge version of uwuify!"));
         lagger = logger;
-        load();
         Sponge.eventManager().registerListeners(plugin, new SpongeUwuHandler());
 
-    }
-
-    @Listener
-    public void refresh(RefreshGameEvent event) {
-        load();
     }
 
 }

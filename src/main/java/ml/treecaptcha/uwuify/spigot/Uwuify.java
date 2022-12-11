@@ -22,14 +22,6 @@ public final class Uwuify extends JavaPlugin {
     /**
      * Should signs be uwuified?
      */
-    public static boolean SIGNS_UWUIFY;
-    public static boolean BOOKS_UWUIFY;
-    public static boolean ANIMALS_UWUIFY;
-    public static boolean ITEM_NAMES_UWUIFY;
-    public static boolean PLAYER_NAMES_UWUIFY;
-    public static boolean JOIN_MESSAGES_UWUIFY;
-    public static boolean ALLOW_TOGGLE;
-
     public static NamespacedKey UWUIFY_KEY;
 
     public static String CHAT_HANDLER;
@@ -39,23 +31,13 @@ public final class Uwuify extends JavaPlugin {
     private List<Listener> listeners;
 
     private static void initializeVariables() {
-        if (uwu.getConfig().getBoolean("use-chat-preview")) {
-            if (uwu.getServer().shouldSendChatPreviews()) {
-                Configuration.USE_PREVIEW = true;
-            } else {
-                uwu.getLogger().log(Level.WARNING, Uwuifier.uwuify("use-chat-preview is set to true, but previews-chat is not enabled in server.properties!"));
-                uwu.getLogger().log(Level.WARNING, Uwuifier.uwuify("To stop this warn please either set use-chat-preview to false or set previews-chat to true."));
-                uwu.getLogger().log(Level.WARNING, Uwuifier.uwuify("Not enabling chat preview!"));
-            }
-        }
-
-        SIGNS_UWUIFY = uwu.getConfig().getBoolean("signs-uwuify");
-        BOOKS_UWUIFY = uwu.getConfig().getBoolean("books-uwuify");
-        ANIMALS_UWUIFY = uwu.getConfig().getBoolean("animals-uwuify");
-        ITEM_NAMES_UWUIFY = uwu.getConfig().getBoolean("item-names-uwuify");
-        PLAYER_NAMES_UWUIFY = uwu.getConfig().getBoolean("player-names-uwuify");
-        JOIN_MESSAGES_UWUIFY = uwu.getConfig().getBoolean("join-messages-uwuify");
-        ALLOW_TOGGLE = uwu.getConfig().getBoolean("allow-toggle");
+        Configuration.SIGNS_UWUIFY = uwu.getConfig().getBoolean("signs-uwuify");
+        Configuration.BOOKS_UWUIFY = uwu.getConfig().getBoolean("books-uwuify");
+        Configuration.ANIMALS_UWUIFY = uwu.getConfig().getBoolean("animals-uwuify");
+        Configuration.ITEM_NAMES_UWUIFY = uwu.getConfig().getBoolean("item-names-uwuify");
+        Configuration.PLAYER_NAMES_UWUIFY = uwu.getConfig().getBoolean("player-names-uwuify");
+        Configuration.JOIN_MESSAGES_UWUIFY = uwu.getConfig().getBoolean("join-messages-uwuify");
+        Configuration.ALLOW_TOGGLE = uwu.getConfig().getBoolean("allow-toggle");
 
         UWUIFY_KEY = new NamespacedKey(uwu, "uwuify");
 

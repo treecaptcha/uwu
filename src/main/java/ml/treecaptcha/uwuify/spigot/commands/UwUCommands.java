@@ -1,5 +1,6 @@
 package ml.treecaptcha.uwuify.spigot.commands;
 
+import ml.treecaptcha.uwuify.core.Configuration;
 import ml.treecaptcha.uwuify.spigot.KeyHolder;
 import ml.treecaptcha.uwuify.spigot.Uwuify;
 import net.kyori.adventure.text.Component;
@@ -20,7 +21,7 @@ public class UwUCommands implements CommandExecutor, TabCompleter {
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String s, @NotNull String[] strings) {
-        if(Uwuify.ALLOW_TOGGLE && sender instanceof Player p) {
+        if(Configuration.ALLOW_TOGGLE && sender instanceof Player p) {
             if(!p.hasPermission("uwuify.toggle")) {
                 p.sendMessage(Component.text("You do not have permission to use this command!"));
                 return true;
@@ -80,7 +81,7 @@ public class UwUCommands implements CommandExecutor, TabCompleter {
 
     @Override
     public @Nullable List<String> onTabComplete(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String[] strings) {
-        if (Uwuify.ALLOW_TOGGLE && commandSender instanceof Player p) {
+        if (Configuration.ALLOW_TOGGLE && commandSender instanceof Player p) {
             return TAB_COMPLETE;
         }
         return null;

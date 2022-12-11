@@ -1,6 +1,7 @@
 package ml.treecaptcha.uwuify.spigot;
 
 import io.github.ran.uwu.client.Uwuifier;
+import ml.treecaptcha.uwuify.core.Configuration;
 import ml.treecaptcha.uwuify.spigot.commands.UwUCommands;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -14,7 +15,7 @@ public class SpigotUwuHandler implements Listener {
 
     @EventHandler
     public void onPlayerSign(SignChangeEvent event) {
-        if(!Uwuify.SIGNS_UWUIFY) return;
+        if(!Configuration.SIGNS_UWUIFY) return;
         if(!UwUCommands.isEnabled(event.getPlayer(), KeyHolder.UWUIFY_SIGNS)) return;
         for(int i = 0; i < event.getLines().length; i++) {
             if("".equals(event.getLine(i))) continue;
@@ -25,7 +26,7 @@ public class SpigotUwuHandler implements Listener {
 
     @EventHandler
     public void onPlayerBookEdit(PlayerEditBookEvent event) {
-        if(!Uwuify.BOOKS_UWUIFY) return;
+        if(!Configuration.BOOKS_UWUIFY) return;
         if(!UwUCommands.isEnabled(event.getPlayer(), KeyHolder.UWUIFY_BOOKS)) return;
         BookMeta meta = event.getNewBookMeta();
         for(int i = 0; i < meta.getPageCount(); i++) {
@@ -40,13 +41,13 @@ public class SpigotUwuHandler implements Listener {
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent e) {
         if(!UwUCommands.isEnabled(e.getPlayer(), KeyHolder.UWUIFY_PLAYER_NAME)) return;
-        if(Uwuify.PLAYER_NAMES_UWUIFY) {
+        if(Configuration.PLAYER_NAMES_UWUIFY) {
             e.getPlayer().setDisplayName(Uwuifier.uwuifyName(e.getPlayer().getDisplayName()));
             e.getPlayer().setCustomName(Uwuifier.uwuifyName(e.getPlayer().getDisplayName()));
             e.getPlayer().setPlayerListName(Uwuifier.uwuifyName(e.getPlayer().getDisplayName()));
             e.getPlayer().setCustomNameVisible(true);
         }
-        if(Uwuify.JOIN_MESSAGES_UWUIFY) {
+        if(Configuration.JOIN_MESSAGES_UWUIFY) {
             e.setJoinMessage(Uwuifier.uwuify(e.getJoinMessage()));
         }
     }

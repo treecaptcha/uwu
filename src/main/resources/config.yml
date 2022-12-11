@@ -23,8 +23,6 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-# this setting requires the previews-chat to be true in server.properties
-use-chat-preview: true
 # uwuify join messages?
 join-messages-uwuify: true
 
