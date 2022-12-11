@@ -1,7 +1,5 @@
 package io.github.ran.uwu.client;
 
-import ml.treecaptcha.uwuify.core.Configuration;
-
 import java.util.Random;
 
 
@@ -22,35 +20,7 @@ public class Uwuifier {
         Random rand = new Random();
         return stringToUwuify.toLowerCase().replaceAll("[rl]","w").replaceAll("n([aeiou])", "ny$1").replaceAll("ove", "uve").replaceAll("uck", "uwq").replaceFirst("i", "i-i").replaceFirst("(?s)(.*)" + "i-i-i", "$1" + "i-i") + ((rand.nextInt(10)) <= 2 ? " >-<" : "") + ((rand.nextInt(10)) <= 1 ? " uwu" : "");
     }
-    /**
-     * This uwuifier makes a guarantee that every input has the same output.
-     * Consider using uwuify to get a different output on each input.
-     * @param stringToUwuify - the string to be uwuified
-     * @return - the uwuified string
-     */
-    public static String uwuifySame(String stringToUwuify){
 
-
-        Random rand = new Random(stringToSeed(stringToUwuify));
-
-        return stringToUwuify.toLowerCase().replaceAll("[rl]","w").replaceAll("n([aeiou])", "ny$1").replaceAll("ove", "uve").replaceAll("uck", "uwq").replaceFirst("i", "i-i").replaceFirst("(?s)(.*)" + "i-i-i", "$1" + "i-i") + ((rand.nextInt(10)) <= 2 ? " >-<" : "") + ((rand.nextInt(10)) <= 1 ? " uwu" : "");
-    }
-
-
-    /**
-     * This uwuifier decicdes between uwuify and uwuifySame depending on the value of USE_PREVIEW.
-     * @param stringToUwuify - the string to be uwuified
-     * @return - the uwuified string
-     */
-    public static String uwuifyMessage(String stringToUwuify) {
-
-        if(Configuration.USE_PREVIEW) {
-            return uwuifySame(stringToUwuify);
-        }
-
-        return uwuify(stringToUwuify);
-
-    }
 
     public static String uwuifyName(String stringToUwuify) {
         return stringToUwuify.toLowerCase().replaceAll("[rl]","w").replaceAll("n([aeiou])", "ny$1").replaceAll("ove", "uve").replaceAll("uck", "uwq").replaceFirst("i", "i-i").replaceFirst("(?s)(.*)" + "i-i-i", "$1" + "i-i");

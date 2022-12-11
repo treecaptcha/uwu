@@ -10,6 +10,6 @@ public class SpigotChatHandler implements Listener {
     @EventHandler
     public void onPlayerChat(AsyncPlayerChatEvent event) {
         if(!UwUCommands.isEnabled(event.getPlayer(), KeyHolder.UWUIFY_CHAT)) return;
-        event.setMessage(Uwuifier.uwuifyMessage(event.getMessage()));
+        event.setMessage(Uwuifier.uwuify(event.getMessage()));
     }
 }

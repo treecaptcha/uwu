@@ -20,7 +20,7 @@ public class SpigotUwuHandler implements Listener {
         for(int i = 0; i < event.getLines().length; i++) {
             if("".equals(event.getLine(i))) continue;
 
-            event.setLine(i, Uwuifier.uwuifyMessage(event.getLine(i)));
+            event.setLine(i, Uwuifier.uwuify(event.getLine(i)));
         }
     }
 

@@ -15,6 +15,6 @@ public class PaperChatHandler implements Listener {
     public void onPlayerPreview(AsyncChatDecorateEvent event) {
         if(!UwUCommands.isEnabled(event.player(), KeyHolder.UWUIFY_CHAT)) return;
         PlainTextComponentSerializer serializer = PlainTextComponentSerializer.plainText();
-        event.result(Component.text(Uwuifier.uwuifyMessage(serializer.serialize(event.result()))));
+        event.result(Component.text(Uwuifier.uwuify(serializer.serialize(event.result()))));
     }
 }

@@ -24,8 +24,7 @@ public class PaperUwuHandler implements Listener {
         PlainTextComponentSerializer serializer = PlainTextComponentSerializer.plainText();
         for (int i = 0; i < e.lines().size(); i++) {
             if ("".equals(serializer.serialize(e.lines().get(i)))) continue;
-
-            e.line(i, Component.text(Uwuifier.uwuifyMessage(serializer.serialize(e.lines().get(i)))));
+            e.line(i, Component.text(Uwuifier.uwuify(serializer.serialize(e.lines().get(i)))));
         }
     }
 
@@ -62,7 +61,7 @@ public class PaperUwuHandler implements Listener {
             event.getPlayer().setCustomNameVisible(true);
         }
         if (Configuration.JOIN_MESSAGES_UWUIFY) {
-            event.joinMessage(Component.text(Uwuifier.uwuifyMessage(AdventureChat.twoString(event.joinMessage()))));
+            event.joinMessage(Component.text(Uwuifier.uwuify(AdventureChat.twoString(event.joinMessage()))));
         }
     }
 }
