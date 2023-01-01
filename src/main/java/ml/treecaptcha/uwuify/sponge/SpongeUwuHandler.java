@@ -11,7 +11,7 @@ public class SpongeUwuHandler {
 
         event.setMessage(
                 AdventureChat.twoComponent(
-                        Uwuifier.uwuifyMessage(
+                        Uwuifier.uwuify(
                                 AdventureChat.twoString(
                                         event.message()
                                 )
